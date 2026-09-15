@@ -389,6 +389,7 @@ export const topics: Topic[] = [
   { href: "/experience", label: "Experience", count: experience.length },
   { href: "/projects", label: "Projects", count: projects.length },
   { href: "/awards", label: "Awards", count: awards.length },
+  { href: "/leadership", label: "Leadership", count: leadership.length },
   { href: "/education", label: "Education", count: education.length },
   { href: "/skills", label: "Skills" },
 ];

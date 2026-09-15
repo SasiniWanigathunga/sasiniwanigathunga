@@ -69,7 +69,8 @@ that. Because it sits in the layout rather than in a page, it is not remounted o
 | `/publications` | `app/publications/page.tsx` |
 | `/experience` | `app/experience/page.tsx` |
 | `/projects` | `app/projects/page.tsx` |
-| `/awards` | `app/awards/page.tsx` — awards and leadership |
+| `/awards` | `app/awards/page.tsx` |
+| `/leadership` | `app/leadership/page.tsx` — student-organisation roles |
 | `/education` | `app/education/page.tsx` — schools and Coursera coursework |
 | `/skills` | `app/skills/page.tsx` |
 

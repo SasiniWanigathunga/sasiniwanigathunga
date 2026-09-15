@@ -17,10 +17,6 @@ export function TopicList() {
               href={topic.href}
               className="group flex items-baseline gap-3 py-3 sm:gap-4"
             >
-              <span className="label !text-[0.6rem] tabular-nums transition-colors group-hover:!text-accent">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
               <span className="serif text-xl text-ink transition-colors group-hover:text-accent sm:text-2xl">
                 {topic.label}
               </span>
