@@ -13,22 +13,22 @@ B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, Univer
 
 **[Test-Time Optimization for Domain Adaptive Open Vocabulary Segmentation](https://arxiv.org/abs/2501.04696)**
 U. De Silva\*, D. Samaraweera\*, **S. Wanigathunga**\*, K. Kariyawasam\*, K. Ranasinghe, M. Naseer, R. Rodrigo
-arXiv:2501.04696 — under review, Elsevier Journal of Neural Networks · \*equal contribution
+arXiv:2501.04696 - under review, Elsevier Journal of Neural Networks · \*equal contribution
 
 ## Experience
 
 | Role | Organisation | Period |
 |---|---|---|
-| Engineer I — AI Research | Robotic Assistance Devices, USA | Sep 2025 — Present |
-| AI Research Engineer | Robotic Assistance Devices, USA | Mar 2025 — Sep 2025 |
-| Machine Learning Engineer — Intern | FcodeLabs, Sri Lanka | Nov 2023 — May 2024 |
-| Visiting Instructor | University of Moratuwa, Sri Lanka | Feb 2024 — Apr 2024 |
+| Engineer I - AI Research | Robotic Assistance Devices, USA | Sep 2025 - Present |
+| AI Research Engineer | Robotic Assistance Devices, USA | Mar 2025 - Sep 2025 |
+| Machine Learning Engineer - Intern | FcodeLabs, Sri Lanka | Nov 2023 - May 2024 |
+| Visiting Instructor | University of Moratuwa, Sri Lanka | Feb 2024 - Apr 2024 |
 
 ## Skills
 
-**Programming Languages** — Python, C++, C#
-**Frameworks** — PyTorch, TensorFlow, spaCy, NLTK, NeMo, OpenCV, LangChain, LangGraph
-**Software & Tools** — VS Code, Git/GitHub, Hugging Face, Kaggle, Docker, AWS, MATLAB, Unity, Playwright
+**Programming Languages** - Python, C++, C#
+**Frameworks** - PyTorch, TensorFlow, spaCy, NLTK, NeMo, OpenCV, LangChain, LangGraph
+**Software & Tools** - VS Code, Git/GitHub, Hugging Face, Kaggle, Docker, AWS, MATLAB, Unity, Playwright
 
 ---
 
@@ -48,7 +48,7 @@ npm run typecheck
 npm run build      # static export to ./out
 ```
 
-To build exactly as the deployed site does — served from the `/sasiniwanigathunga` subpath:
+To build exactly as the deployed site does - served from the `/sasiniwanigathunga` subpath:
 
 ```bash
 NEXT_PUBLIC_BASE_PATH=/sasiniwanigathunga npm run build
@@ -65,26 +65,26 @@ that. Because it sits in the layout rather than in a page, it is not remounted o
 
 | Route | Source |
 |---|---|
-| `/` | `app/page.tsx` — About, Updates, index |
+| `/` | `app/page.tsx` - About, Updates, index |
 | `/publications` | `app/publications/page.tsx` |
 | `/experience` | `app/experience/page.tsx` |
 | `/projects` | `app/projects/page.tsx` |
 | `/awards` | `app/awards/page.tsx` |
-| `/leadership` | `app/leadership/page.tsx` — student-organisation roles |
-| `/education` | `app/education/page.tsx` — schools and Coursera coursework |
+| `/leadership` | `app/leadership/page.tsx` - student-organisation roles |
+| `/education` | `app/education/page.tsx` - schools and Coursera coursework |
 | `/skills` | `app/skills/page.tsx` |
 
 Adding a page means creating `app/<name>/page.tsx` and adding an entry to `topics` at the bottom of
-[`lib/content.ts`](lib/content.ts) — the nav, the home page index and the ⌘K palette are all driven
+[`lib/content.ts`](lib/content.ts) - the nav, the home page index and the ⌘K palette are all driven
 from that one array. `navItems` is `topics` with Home prepended; Home is not a topic, so it has no
 index card and no count.
 
-**Editing content.** All content — roles, publications, projects, skills, awards, education — lives in
+**Editing content.** All content - roles, publications, projects, skills, awards, education - lives in
 [`lib/content.ts`](lib/content.ts), sourced verbatim from the CV, arXiv and Google Scholar. Change it
 there and every page follows. The CV PDF served by the site is `public/Sasini_Wanigathunga_CV.pdf`,
 and the profile photo is `public/profile.jpg`.
 
-**Theming.** Both palettes are CSS custom properties at the top of [`app/globals.css`](app/globals.css) —
+**Theming.** Both palettes are CSS custom properties at the top of [`app/globals.css`](app/globals.css) -
 warm paper for light, deep navy for dark. The theme is resolved before first paint by an inline script
 in `app/layout.tsx`, so there is no flash of the wrong palette.
 

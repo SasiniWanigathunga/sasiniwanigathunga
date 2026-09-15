@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 /**
  * The home page's way into each topic page, set as a contents list with
- * dotted leaders. No heading — the shape of the list says what it is.
+ * dotted leaders. No heading - the shape of the list says what it is.
  */
 export function TopicList() {
   return (

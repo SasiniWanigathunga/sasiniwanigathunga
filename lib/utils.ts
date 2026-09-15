@@ -1,6 +1,6 @@
 /**
  * GitHub Pages serves this site from a subdirectory, so anything that is not
- * routed through `next/link` — PDFs, images, favicons — has to carry the base
+ * routed through `next/link` - PDFs, images, favicons - has to carry the base
  * path itself. Next inlines NEXT_PUBLIC_* at build time, so this costs nothing
  * at runtime.
  */

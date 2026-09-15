@@ -11,7 +11,7 @@
 /* ------------------------------------------------------------------ */
 
 :root {
-  /* Warm paper — the default reading surface. */
+  /* Warm paper - the default reading surface. */
   --c-paper: #fbfaf7;
   --c-paper-2: #f3f0e9;
   --c-surface: #ffffff;
@@ -23,7 +23,7 @@
   --c-accent: #9a3b28;
   --c-accent-soft: #f5e7e2;
   --c-shadow: 20 18 14;
-  /* Scrim behind modals — always darkens, in either theme. */
+  /* Scrim behind modals - always darkens, in either theme. */
   --c-veil: rgb(20 18 14 / 0.32);
 
   /*
@@ -44,7 +44,7 @@
 }
 
 [data-theme="dark"] {
-  /* Deep navy — nothing on the page sits at or near black. */
+  /* Deep navy - nothing on the page sits at or near black. */
   --c-paper: #121c33;
   --c-paper-2: #17223c;
   --c-surface: #1b2846;
@@ -175,7 +175,7 @@
 
 @layer utilities {
   /*
-   * The single reading column the whole page lines up against — an academic
+   * The single reading column the whole page lines up against - an academic
    * homepage, not a wide marketing layout.
    */
   .shell {
@@ -203,7 +203,7 @@
     }
   }
 
-  /* Section rhythm — consistent spacing between every block on the page. */
+  /* Section rhythm - consistent spacing between every block on the page. */
   .section {
     scroll-margin-top: 6rem;
     padding-block: 3rem;
@@ -237,7 +237,7 @@
     text-wrap: pretty;
   }
 
-  /* Paper grain — a single tiled SVG, kept faint enough to read as texture. */
+  /* Paper grain - a single tiled SVG, kept faint enough to read as texture. */
   .grain::before {
     content: "";
     position: fixed;
@@ -330,7 +330,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Print — the page doubles as a readable one-page summary             */
+/* Print - the page doubles as a readable one-page summary             */
 /* ------------------------------------------------------------------ */
 
 @media print {

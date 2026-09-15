@@ -9,8 +9,8 @@ export function ExperienceList() {
         <Reveal as="li" key={role.org} delay={0.04 * i}>
           <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
             <span className="label !text-[0.625rem] sm:pt-1.5">
-              {role.positions[role.positions.length - 1].period.split(" — ")[0]} —{" "}
-              {role.positions[0].period.split(" — ")[1]}
+              {role.positions[role.positions.length - 1].period.split(" - ")[0]} -{" "}
+              {role.positions[0].period.split(" - ")[1]}
             </span>
 
             <div>

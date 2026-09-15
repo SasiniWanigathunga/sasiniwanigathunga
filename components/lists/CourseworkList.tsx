@@ -1,7 +1,7 @@
 import { coursework } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
 
-/** CV section: "Relevant Coursework — Coursera". */
+/** CV section: "Relevant Coursework - Coursera". */
 export function CourseworkList() {
   return (
     <ul className="space-y-3">

@@ -2,7 +2,7 @@
   "name": "sasiniwanigathunga",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfolio of Sasini Wanigathunga — AI Research Engineer",
+  "description": "Portfolio of Sasini Wanigathunga - AI Research Engineer",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

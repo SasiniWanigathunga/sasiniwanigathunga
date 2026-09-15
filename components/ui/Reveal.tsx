@@ -14,8 +14,8 @@ type RevealProps = {
 };
 
 /**
- * Scroll-triggered entrance. Fires once, and collapses to a plain fade —
- * effectively nothing — when the visitor has asked for reduced motion.
+ * Scroll-triggered entrance. Fires once, and collapses to a plain fade -
+ * effectively nothing - when the visitor has asked for reduced motion.
  */
 export function Reveal({ children, delay = 0, y = 24, className, as = "div" }: RevealProps) {
   const reduce = useReducedMotion();

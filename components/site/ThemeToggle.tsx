@@ -25,7 +25,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {
-      // Private browsing or blocked storage — the toggle still works for
+      // Private browsing or blocked storage - the toggle still works for
       // this page view, it just will not be remembered.
     }
   }

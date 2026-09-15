@@ -7,7 +7,7 @@ import { useMemo } from "react";
  * Decorative halo of patches around the profile photo. Cells sit in a ring
  * between two radii and settle in an anticlockwise sweep.
  *
- * Fully deterministic — no randomness — so server and client render identical
+ * Fully deterministic - no randomness - so server and client render identical
  * markup and there is nothing to hydrate-mismatch.
  */
 const N = 13;
@@ -43,7 +43,7 @@ export function PatchGrid({ className = "" }: { className?: string }) {
         const distance = Math.hypot(dx, dy);
         if (distance < INNER || distance > OUTER) continue;
 
-        // 0 at due east, increasing anticlockwise — drives both hue and order.
+        // 0 at due east, increasing anticlockwise - drives both hue and order.
         const angle = (Math.atan2(dy, dx) + Math.PI) / (Math.PI * 2);
 
         out.push({

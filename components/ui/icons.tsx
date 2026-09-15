@@ -1,5 +1,5 @@
 /**
- * Inline icon set. Kept local rather than pulling an icon package in — the
+ * Inline icon set. Kept local rather than pulling an icon package in - the
  * site needs a dozen glyphs, and these inherit `currentColor` and stroke
  * weight from the surrounding type.
  */

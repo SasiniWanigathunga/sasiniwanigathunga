@@ -29,13 +29,13 @@ const jetbrainsMono = JetBrains_Mono({
 
 const siteUrl = "https://sasiniwanigathunga.github.io/sasiniwanigathunga";
 const description =
-  "Sasini Wanigathunga — AI Research Engineer at Robotic Assistance Devices. B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, University of Moratuwa. Computer Vision and Natural Language Processing.";
+  "Sasini Wanigathunga - AI Research Engineer at Robotic Assistance Devices. B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, University of Moratuwa. Computer Vision and Natural Language Processing.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} — AI Research Engineer`,
-    template: `%s — ${profile.name}`,
+    default: `${profile.name} - AI Research Engineer`,
+    template: `%s - ${profile.name}`,
   },
   description,
   keywords: [
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "profile",
     url: siteUrl,
-    title: `${profile.name} — AI Research Engineer`,
+    title: `${profile.name} - AI Research Engineer`,
     description,
     siteName: profile.name,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — AI Research Engineer`,
+    title: `${profile.name} - AI Research Engineer`,
     description,
   },
   robots: { index: true, follow: true },

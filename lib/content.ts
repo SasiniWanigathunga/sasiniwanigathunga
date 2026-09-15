@@ -37,7 +37,7 @@ export const links = {
 } as const;
 
 /**
- * About. Plain statements of fact drawn from the CV — current role and its
+ * About. Plain statements of fact drawn from the CV - current role and its
  * scope, degree and result, research area, prior positions.
  */
 export const about = [
@@ -62,11 +62,11 @@ export const about = [
 export const updates = [
   {
     date: "Sep 2025",
-    text: "Began as Engineer I — AI Research at Robotic Assistance Devices.",
+    text: "Began as Engineer I - AI Research at Robotic Assistance Devices.",
   },
   {
     date: "2025",
-    text: "Completed B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, University of Moratuwa — GPA 3.90/4.0.",
+    text: "Completed B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, University of Moratuwa - GPA 3.90/4.0.",
   },
   {
     date: "Mar 2025",
@@ -106,7 +106,7 @@ export const publications: Publication[] = [
       { name: "Muzammal Naseer" },
       { name: "Ranga Rodrigo" },
     ],
-    venue: "arXiv:2501.04696 — under review, Elsevier Journal of Neural Networks",
+    venue: "arXiv:2501.04696 - under review, Elsevier Journal of Neural Networks",
     abstract:
       "We present Seg-TTO, a novel framework for zero-shot, open-vocabulary semantic segmentation (OVSS), designed to excel in specialized domain tasks. While current open-vocabulary approaches show impressive performance on standard segmentation benchmarks under zero-shot settings, they fall short of supervised counterparts on highly domain-specific datasets. We focus on segmentation-specific test-time optimization to address this gap. Segmentation requires an understanding of multiple concepts within a single image while retaining the locality and spatial structure of representations. We propose a novel self-supervised objective adhering to these requirements and use it to align the model parameters with input images at test time. In the textual modality, we learn multiple embeddings for each category to capture diverse concepts within an image, while in the visual modality, we calculate pixel-level losses followed by embedding aggregation operations specific to preserving spatial structure. Our resulting framework termed Seg-TTO is a plug-and-play module. We integrate Seg-TTO with three state-of-the-art OVSS approaches and evaluate across 22 challenging OVSS tasks covering a range of specialized domains. Our Seg-TTO demonstrates clear performance improvements (up to 27% mIoU increase on some datasets) establishing new state-of-the-art. Our code and models will be released publicly.",
     links: [
@@ -135,8 +135,8 @@ export const experience: Role[] = [
     orgNote: "USA",
     url: links.rad,
     positions: [
-      { title: "Engineer I — AI Research", period: "Sep 2025 — Present", current: true },
-      { title: "AI Research Engineer", period: "Mar 2025 — Sep 2025" },
+      { title: "Engineer I - AI Research", period: "Sep 2025 - Present", current: true },
+      { title: "AI Research Engineer", period: "Mar 2025 - Sep 2025" },
     ],
     description:
       "Contributing to the design and development of agentic AI, AI automation, and video analytics solutions for surveillance applications, with a focus on deep learning research.",
@@ -144,7 +144,7 @@ export const experience: Role[] = [
   {
     org: "FcodeLabs",
     orgNote: "Sri Lanka",
-    positions: [{ title: "Machine Learning Engineer — Intern", period: "Nov 2023 — May 2024" }],
+    positions: [{ title: "Machine Learning Engineer - Intern", period: "Nov 2023 - May 2024" }],
     description:
       "Worked on privacy-focused ML solutions, including developing a novel method for removing PII from speech data and building production-ready NLP modules for privacy data masking and LLM-based activity suggestion features.",
   },
@@ -152,13 +152,13 @@ export const experience: Role[] = [
     org: "University of Moratuwa",
     orgNote: "Sri Lanka",
     url: links.uom,
-    positions: [{ title: "Visiting Instructor", period: "Feb 2024 — Apr 2024" }],
+    positions: [{ title: "Visiting Instructor", period: "Feb 2024 - Apr 2024" }],
     description: "Worked as a visiting instructor for EN1094: Laboratory Practice.",
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/* Projects — titles, dates, tags and descriptions are the CV's own     */
+/* Projects - titles, dates, tags and descriptions are the CV's own     */
 /* ------------------------------------------------------------------ */
 
 export type Project = {
@@ -174,7 +174,7 @@ export const projects: Project[] = [
   {
     title: "Domain Adaptive Open Vocabulary Semantic Segmentation",
     note: "Final Year Project",
-    period: "Jun 2024 — Present",
+    period: "Jun 2024 - Present",
     description:
       "Developed a novel test-time optimization framework. Evaluated across 22 challenging domain specific datasets and obtained overall +2.03 mIoU improvement over the state-of-the-art.",
     stack: ["Computer Vision", "VLMs", "Prompt Learning"],
@@ -182,7 +182,7 @@ export const projects: Project[] = [
   },
   {
     title: "Spoken Named Entity Localization",
-    period: "Mar 2024 — Present",
+    period: "Mar 2024 - Present",
     description:
       "Developed a novel approach for text-independent PII removal in speech data. Achieved +4.1 frame-level F1 score, while using 67% fewer parameters and low latency over the state-of-the-art.",
     stack: ["NLP", "NER", "Spoken Language Understanding"],
@@ -197,7 +197,7 @@ export const projects: Project[] = [
   },
   {
     title: "Ophthalmic Biomarker Detection",
-    period: "Aug 2023 — Oct 2023",
+    period: "Aug 2023 - Oct 2023",
     description:
       "Optimized the algorithm to predict the presence or absence of biomarkers on OCT scan images. Tested with different preprocessing techniques and backbones and optimized the model by changing the classification layers.",
     stack: ["Computer Vision", "Deep Learning"],
@@ -205,7 +205,7 @@ export const projects: Project[] = [
   },
   {
     title: "Software Design Competition",
-    period: "Jan 2024 — Jul 2024",
+    period: "Jan 2024 - Jul 2024",
     description:
       "Designed a game using Unity with WebGL including API authentication, player profile, a questionnaire that can be opened using a web browser, dynamic and interactive game environment and a leaderboard.",
     stack: ["Unity", "C#"],
@@ -213,7 +213,7 @@ export const projects: Project[] = [
   },
   {
     title: "Non-pipelined Single Stage (Cycle) RISC-V Processor Design",
-    period: "Sep 2023 — Oct 2023",
+    period: "Sep 2023 - Oct 2023",
     description:
       "Designed a 32 bit non-pipelined RISC-V processor using Microprogramming with 3 bus structure using RV32I implementation.",
     stack: ["SystemVerilog", "Xilinx"],
@@ -243,7 +243,7 @@ export const projects: Project[] = [
 
 export const awards = [
   {
-    period: "Aug — Sep 2023",
+    period: "Aug - Sep 2023",
     title: "IEEE SPS Video and Image Processing (VIP) Cup 2023",
     rank: "World Rank 6",
     detail: "Team: TESSERACT. Achieved F1 score of 0.7921 for ophthalmic biomarkers detection.",
@@ -304,7 +304,7 @@ export const education = [
     place: "Sri Lanka",
     url: links.uom,
     degree: "B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering",
-    period: "2021 — 2025",
+    period: "2021 - 2025",
     result: "GPA 3.90 / 4.0",
     notes: ["Dean's List: semesters 1, 2, 3, 4, 6, 7 and 8"],
     coursework: [
@@ -323,8 +323,8 @@ export const education = [
   {
     school: "Sujatha Vidyalaya",
     place: "Matara, Sri Lanka",
-    degree: "GCE Advanced Level — Physical Science Stream",
-    period: "2011 — 2019",
+    degree: "GCE Advanced Level - Physical Science Stream",
+    period: "2011 - 2019",
     result: "Z-score 2.6629",
     notes: [
       "Island Rank 97",
@@ -335,7 +335,7 @@ export const education = [
 ] as const;
 
 /* ------------------------------------------------------------------ */
-/* Skills — the CV's own groupings                                     */
+/* Skills - the CV's own groupings                                     */
 /* ------------------------------------------------------------------ */
 
 export const skills = [
@@ -360,19 +360,19 @@ export const skills = [
   },
 ] as const;
 
-/** CV section: "Relevant Coursework — Coursera". */
+/** CV section: "Relevant Coursework - Coursera". */
 export const coursework = [
   { title: "Machine Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
   { title: "Deep Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
   { title: "Retrieval Augmented Generation (RAG)", issuer: "DeepLearning.AI" },
   {
     title: "Machine Learning in the Enterprise",
-    issuer: "Machine Learning on Google Cloud Specialization — Google Cloud",
+    issuer: "Machine Learning on Google Cloud Specialization - Google Cloud",
   },
 ] as const;
 
 export const aside = {
-  sports: "Chess — FIDE Rating 1219",
+  sports: "Chess - FIDE Rating 1219",
   languages: "English (professional proficiency) · Sinhala (native proficiency)",
 } as const;
 
@@ -395,7 +395,7 @@ export const topics: Topic[] = [
 ];
 
 /**
- * What the navigation shows. Home is not a topic — it has no index card and
- * no count — so it is added here rather than to `topics`.
+ * What the navigation shows. Home is not a topic - it has no index card and
+ * no count - so it is added here rather than to `topics`.
  */
 export const navItems: Topic[] = [{ href: "/", label: "Home" }, ...topics];
