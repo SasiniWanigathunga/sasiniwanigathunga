@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -11,40 +11,22 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useCommandPalette } from "./CommandPalette";
 
 export function Nav() {
-  const { scrollY } = useScroll();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const { open: openPalette } = useCommandPalette();
   const reduce = useReducedMotion();
-
-  const isHome = samePath(pathname, "/");
-
-  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 40));
 
   // Close the mobile menu whenever a navigation actually happens.
   useEffect(() => setMenuOpen(false), [pathname]);
 
   return (
     <>
-      <header
-        className={cx(
-          "no-print fixed inset-x-0 top-0 z-50 transition-all duration-500",
-          scrolled || !isHome
-            ? "border-b border-hairline bg-paper/85 backdrop-blur-xl"
-            : "border-b border-transparent",
-        )}
-      >
-        <div className="shell-wide flex h-14 items-center gap-4">
-          {/* On the home page the name is already in the header below, so it
-              only appears here once that has scrolled away. */}
-          <Link
-            href="/"
-            className={cx(
-              "serif shrink-0 text-[0.95rem] transition-all duration-500",
-              !isHome || scrolled ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0",
-            )}
-          >
+      {/* Content now starts immediately below the bar on every page, so the
+          bar is always opaque rather than fading in on scroll. */}
+      <header className="no-print fixed inset-x-0 top-0 z-50 border-b border-hairline bg-paper/85 backdrop-blur-xl">
+        <div className="shell-wide flex h-14 items-center gap-4 lg:pl-[17rem]">
+          {/* Hidden on wide screens, where the left rail already shows the name. */}
+          <Link href="/" className="serif shrink-0 text-[0.95rem] lg:hidden">
             {profile.name}
           </Link>
 

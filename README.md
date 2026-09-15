@@ -59,9 +59,13 @@ which type-checks, builds the static export, and publishes to GitHub Pages.
 
 **Pages.** Each topic is its own route, statically exported:
 
+The photo, name and external links live in [`components/site/ProfilePanel.tsx`](components/site/ProfilePanel.tsx),
+rendered once in the root layout: a fixed left rail from `lg` up, and a block above the content below
+that. Because it sits in the layout rather than in a page, it is not remounted on navigation.
+
 | Route | Source |
 |---|---|
-| `/` | `app/page.tsx` — photo header, About, Updates, index |
+| `/` | `app/page.tsx` — About, Updates, index |
 | `/publications` | `app/publications/page.tsx` |
 | `/experience` | `app/experience/page.tsx` |
 | `/projects` | `app/projects/page.tsx` |

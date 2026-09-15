@@ -18,7 +18,7 @@ export function PageShell({ title, aside, children }: Props) {
   const next = index >= 0 && index < topics.length - 1 ? topics[index + 1] : null;
 
   return (
-    <div className="shell pb-16 pt-24 md:pt-32">
+    <div className="shell pb-16">
       <Reveal>
         <div className="mb-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b border-hairline pb-5">
           <h1 className="serif flex items-baseline gap-3 text-4xl md:text-[2.75rem]">

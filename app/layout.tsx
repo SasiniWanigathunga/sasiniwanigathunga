@@ -4,6 +4,7 @@ import { profile, links } from "@/lib/content";
 import { CommandPaletteProvider } from "@/components/site/CommandPalette";
 import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
+import { ProfilePanelInline, ProfilePanelRail } from "@/components/site/ProfilePanel";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import "./globals.css";
 
@@ -122,10 +123,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CommandPaletteProvider>
           <ScrollProgress />
           <Nav />
-          <main id="main" className="flex-1">
+          <ProfilePanelRail />
+          {/* The left offset matches the rail's width; the top padding clears
+              the fixed nav on every page. */}
+          <main id="main" className="flex-1 pt-20 lg:pl-[17rem] lg:pt-24">
+            <ProfilePanelInline />
             {children}
           </main>
-          <Footer />
+          <div className="lg:pl-[17rem]">
+            <Footer />
+          </div>
         </CommandPaletteProvider>
       </body>
     </html>
