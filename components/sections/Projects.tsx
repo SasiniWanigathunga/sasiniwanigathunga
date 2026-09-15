@@ -31,10 +31,8 @@ export function Projects() {
       <div className="shell">
         <SectionHeading
           index="03"
-          eyebrow="Projects"
-          title="Vision, language, silicon."
-          lede="Research prototypes, competition entries, and a few things built purely to understand how they work from the inside."
-          aside={<span className="label">{projects.length} selected</span>}
+          title="Projects"
+          aside={<span className="label">{projects.length} total</span>}
         />
 
         <div className="no-scrollbar -mx-5 mb-10 flex gap-2 overflow-x-auto px-5 md:mx-0 md:px-0">
@@ -55,7 +53,9 @@ export function Projects() {
                 <motion.span
                   layoutId="project-filter-pill"
                   className="absolute inset-0 rounded-full bg-ink"
-                  transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 38 }}
+                  transition={
+                    reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 38 }
+                  }
                 />
               )}
               <span className="relative">{category}</span>
@@ -75,7 +75,6 @@ export function Projects() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.97 }}
                   transition={{ duration: reduce ? 0.15 : 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className={cx(project.featured && "sm:col-span-2 lg:col-span-1")}
                 >
                   <Wrapper
                     {...(project.href
@@ -83,36 +82,27 @@ export function Projects() {
                       : {})}
                     className={cx(
                       "group flex h-full flex-col rounded-lg border border-hairline bg-surface p-6 transition-all duration-300",
-                      project.href && "hover:-translate-y-1 hover:border-hairline-strong hover:card-shadow",
+                      project.href &&
+                        "hover:-translate-y-1 hover:border-hairline-strong hover:card-shadow",
                     )}
                   >
                     <div className="mb-5 flex items-start justify-between gap-3">
                       <span className="label !text-[0.6rem]">{project.period}</span>
-                      {project.featured ? (
-                        <span className="rounded-full bg-accent-soft px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider text-accent">
-                          Featured
-                        </span>
-                      ) : project.href ? (
+                      {project.href && (
                         <ArrowUpRight className="size-4 shrink-0 text-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                      ) : null}
+                      )}
                     </div>
 
                     <h3 className="serif text-xl leading-tight text-ink">{project.title}</h3>
-                    {project.subtitle && (
-                      <p className="serif mt-1 text-[0.95rem] italic leading-snug text-muted">
-                        {project.subtitle}
+                    {project.note && (
+                      <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-wider text-accent">
+                        {project.note}
                       </p>
                     )}
 
                     <p className="mt-4 text-[0.875rem] leading-relaxed text-ink-2 pretty">
                       {project.description}
                     </p>
-
-                    {project.result && (
-                      <p className="mt-4 border-l-2 border-accent pl-3 text-[0.825rem] leading-relaxed text-ink">
-                        {project.result}
-                      </p>
-                    )}
 
                     <ul className="mt-auto flex flex-wrap gap-1.5 pt-6">
                       {project.stack.map((tech) => (

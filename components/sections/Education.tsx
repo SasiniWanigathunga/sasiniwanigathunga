@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 export function Education() {
   return (
     <section id="education" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading index="06" eyebrow="Education" title="Where the foundations were laid." />
+      <SectionHeading index="06" title="Education" />
 
       <ol className="border-t border-hairline">
         {education.map((entry, i) => (
@@ -42,7 +42,10 @@ export function Education() {
                 {entry.notes.length > 0 && (
                   <ul className="mt-4 space-y-1.5">
                     {entry.notes.map((note) => (
-                      <li key={note} className="flex items-baseline gap-2.5 text-[0.875rem] text-ink-2">
+                      <li
+                        key={note}
+                        className="flex items-baseline gap-2.5 text-[0.875rem] text-ink-2"
+                      >
                         <span aria-hidden className="h-px w-3 shrink-0 bg-accent" />
                         {note}
                       </li>

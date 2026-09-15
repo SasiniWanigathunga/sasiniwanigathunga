@@ -8,9 +8,7 @@ export function Footer() {
           © {new Date().getFullYear()} {profile.name}
         </p>
 
-        <p className="text-[0.75rem] text-muted">
-          Built with Next.js, Tailwind CSS and Framer Motion. Set in Newsreader &amp; Inter.
-        </p>
+        <p className="text-[0.75rem] text-muted">Next.js · Tailwind CSS · Framer Motion</p>
 
         <a
           href="#top"

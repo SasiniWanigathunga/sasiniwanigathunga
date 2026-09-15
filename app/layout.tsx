@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const siteUrl = "https://sasiniwanigathunga.github.io/sasiniwanigathunga";
 const description =
-  "Sasini Wanigathunga is an AI Research Engineer at Robotic Assistance Devices working on vision–language models, agentic AI and video analytics. First author of Seg-TTO (arXiv:2501.04696).";
+  "Sasini Wanigathunga — AI Research Engineer at Robotic Assistance Devices. B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, University of Moratuwa. Computer Vision and Natural Language Processing.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,10 +37,9 @@ export const metadata: Metadata = {
     "Sasini Wanigathunga",
     "AI Research Engineer",
     "Computer Vision",
-    "Vision Language Models",
+    "Natural Language Processing",
     "Open Vocabulary Segmentation",
     "Seg-TTO",
-    "Natural Language Processing",
     "Robotic Assistance Devices",
     "University of Moratuwa",
   ],

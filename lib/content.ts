@@ -1,14 +1,12 @@
 /**
- * Single source of truth for every piece of content on the site.
+ * Single source of truth for the site.
  *
- * Everything here is sourced from the CV (Sasini_Wanigathunga_2026), the
- * arXiv record for Seg-TTO, the Google Scholar profile, and the public
- * GitHub profile. Nothing is inferred or embellished — update this file
- * and the whole site follows.
+ * Every string here is taken from the CV (Sasini_Wanigathunga_2026), the arXiv
+ * record for arXiv:2501.04696, or the Google Scholar profile. Descriptions are
+ * the CV's own wording. Nothing is paraphrased, summarised or added.
  *
- * Deliberately omitted for privacy: personal phone number, and the
- * referees' names, phone numbers and email addresses from the CV.
- * Those stay in the PDF, which is shared on request rather than indexed.
+ * Deliberately omitted for privacy: personal phone number, and the referees'
+ * names, phone numbers and email addresses. Those remain in the PDF.
  */
 
 export type NavItem = { id: string; label: string };
@@ -17,8 +15,8 @@ export const nav: NavItem[] = [
   { id: "research", label: "Research" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "toolkit", label: "Toolkit" },
-  { id: "honors", label: "Honors" },
+  { id: "skills", label: "Skills" },
+  { id: "awards", label: "Awards" },
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
@@ -32,15 +30,8 @@ export const profile = {
   companyUrl: "https://www.radsecurity.ai/",
   location: "Sri Lanka",
   email: "wanigathungasasini@gmail.com",
-  // One-line positioning statement used in the hero and page metadata.
-  tagline:
-    "I build vision–language systems that hold up outside the datasets they were trained on.",
-  summary: [
-    "I'm an AI Research Engineer at Robotic Assistance Devices, working on agentic AI, automation, and video analytics for real-world surveillance — the kind of setting where a model meets lighting, hardware, and edge cases no benchmark prepared it for.",
-    "My research sits at the meeting point of vision and language. My first-author work, Seg-TTO, adapts open-vocabulary segmentation models at test time so they survive the move into specialised domains, and I've built text-independent PII removal for speech that is both more accurate and dramatically smaller than the prior state of the art.",
-    "I graduated from the University of Moratuwa with a B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, a GPA of 3.90/4.0, and the Dean's List in seven of eight semesters.",
-  ],
-  interests: ["Computer Vision", "Vision–Language Models", "Natural Language Processing", "Agentic AI"],
+  /** Research interests as listed on the Google Scholar profile. */
+  interests: ["Computer Vision", "Natural Language Processing"],
 } as const;
 
 export const links = {
@@ -51,13 +42,12 @@ export const links = {
   cv: "/Sasini_Wanigathunga_CV.pdf",
 } as const;
 
-/** Headline numbers for the hero ticker. Each one is traceable to a source. */
-export const metrics = [
-  { value: "22", label: "domain datasets evaluated", context: "Seg-TTO" },
-  { value: "+2.03", label: "mIoU over state of the art", context: "Seg-TTO, overall" },
-  { value: "67%", label: "fewer parameters", context: "Spoken NE localization" },
-  { value: "3.90", label: "GPA / 4.0", context: "University of Moratuwa" },
-  { value: "#6", label: "world rank, IEEE VIP Cup", context: "2023" },
+/** Facts strip under the hero. Label / value only. */
+export const facts = [
+  { label: "Current", value: "Engineer I — AI Research", note: "Robotic Assistance Devices, USA" },
+  { label: "Education", value: "B.Sc. Engineering (Hons)", note: "Electronic and Telecommunication Engineering, University of Moratuwa" },
+  { label: "GPA", value: "3.90 / 4.0", note: "Dean's List — semesters 1, 2, 3, 4, 6, 7, 8" },
+  { label: "Research interests", value: "Computer Vision", note: "Natural Language Processing" },
 ] as const;
 
 /* ------------------------------------------------------------------ */
@@ -70,8 +60,8 @@ export type Publication = {
   venue: string;
   status: string;
   year: string;
+  /** Verbatim from arXiv:2501.04696. */
   abstract: string;
-  highlights: { value: string; label: string }[];
   links: { label: string; href: string }[];
 };
 
@@ -88,15 +78,10 @@ export const publications: Publication[] = [
       { name: "Ranga Rodrigo" },
     ],
     venue: "arXiv:2501.04696",
-    status: "Under review — Elsevier Neural Networks",
+    status: "Under review — Elsevier Journal of Neural Networks",
     year: "2025",
     abstract:
-      "We present Seg-TTO, a framework for zero-shot, open-vocabulary semantic segmentation that closes the gap between generalist models and highly specialised domains. Seg-TTO introduces a self-supervised test-time optimization objective that preserves spatial structure while handling multiple concepts per image, learning several text embeddings per category and applying pixel-level losses with aggregation operations. Plugged into three state-of-the-art approaches and evaluated across 22 specialised domain tasks, it establishes new performance benchmarks — with improvements of up to 27% mIoU on individual datasets.",
-    highlights: [
-      { value: "22", label: "specialised domain tasks" },
-      { value: "3", label: "SOTA backbones integrated" },
-      { value: "up to 27%", label: "mIoU increase on individual datasets" },
-    ],
+      "We present Seg-TTO, a novel framework for zero-shot, open-vocabulary semantic segmentation (OVSS), designed to excel in specialized domain tasks. While current open-vocabulary approaches show impressive performance on standard segmentation benchmarks under zero-shot settings, they fall short of supervised counterparts on highly domain-specific datasets. We focus on segmentation-specific test-time optimization to address this gap. Segmentation requires an understanding of multiple concepts within a single image while retaining the locality and spatial structure of representations. We propose a novel self-supervised objective adhering to these requirements and use it to align the model parameters with input images at test time. In the textual modality, we learn multiple embeddings for each category to capture diverse concepts within an image, while in the visual modality, we calculate pixel-level losses followed by embedding aggregation operations specific to preserving spatial structure. Our resulting framework termed Seg-TTO is a plug-and-play module. We integrate Seg-TTO with three state-of-the-art OVSS approaches and evaluate across 22 challenging OVSS tasks covering a range of specialized domains. Our Seg-TTO demonstrates clear performance improvements (up to 27% mIoU increase on some datasets) establishing new state-of-the-art. Our code and models will be released publicly.",
     links: [
       { label: "arXiv", href: "https://arxiv.org/abs/2501.04696" },
       { label: "PDF", href: "https://arxiv.org/pdf/2501.04696" },
@@ -114,8 +99,8 @@ export type Role = {
   orgNote?: string;
   url?: string;
   positions: { title: string; period: string; current?: boolean }[];
+  /** CV wording, verbatim. */
   description: string;
-  tags: string[];
 };
 
 export const experience: Role[] = [
@@ -128,29 +113,26 @@ export const experience: Role[] = [
       { title: "AI Research Engineer", period: "Mar 2025 — Sep 2025" },
     ],
     description:
-      "Designing and building agentic AI, AI automation, and video analytics for surveillance applications, with a focus on deep learning research that has to survive deployment.",
-    tags: ["Agentic AI", "Video Analytics", "Deep Learning", "Automation"],
+      "Contributing to the design and development of agentic AI, AI automation, and video analytics solutions for surveillance applications, with a focus on deep learning research.",
   },
   {
     org: "FcodeLabs",
     orgNote: "Sri Lanka",
     positions: [{ title: "Machine Learning Engineer — Intern", period: "Nov 2023 — May 2024" }],
     description:
-      "Worked on privacy-focused ML: developed a novel method for removing personally identifiable information from speech data, and shipped production-ready NLP modules for privacy data masking and LLM-based activity suggestion.",
-    tags: ["Privacy ML", "Speech", "NLP", "LLMs"],
+      "Worked on privacy-focused ML solutions, including developing a novel method for removing PII from speech data and building production-ready NLP modules for privacy data masking and LLM-based activity suggestion features.",
   },
   {
     org: "University of Moratuwa",
     orgNote: "Sri Lanka",
     url: "https://uom.lk/",
     positions: [{ title: "Visiting Instructor", period: "Feb 2024 — Apr 2024" }],
-    description: "Instructor for EN1094: Laboratory Practice, supporting first-year engineering undergraduates.",
-    tags: ["Teaching", "Electronics"],
+    description: "Worked as a visiting instructor for EN1094: Laboratory Practice.",
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/* Projects                                                            */
+/* Projects — titles, dates, tags and descriptions are the CV's own     */
 /* ------------------------------------------------------------------ */
 
 export const projectCategories = [
@@ -165,200 +147,152 @@ export type ProjectCategory = (typeof projectCategories)[number];
 
 export type Project = {
   title: string;
-  subtitle?: string;
+  note?: string;
   period: string;
   category: Exclude<ProjectCategory, "All">;
-  featured?: boolean;
   description: string;
-  result?: string;
   stack: string[];
   href?: string;
 };
 
 export const projects: Project[] = [
   {
-    title: "Seg-TTO",
-    subtitle: "Domain adaptive open-vocabulary semantic segmentation",
+    title: "Domain Adaptive Open Vocabulary Semantic Segmentation",
+    note: "Final Year Project",
     period: "Jun 2024 — Present",
     category: "Vision",
-    featured: true,
     description:
-      "Final year research project. A novel test-time optimization framework that adapts open-vocabulary segmentation models to specialised domains without retraining.",
-    result: "Evaluated across 22 domain-specific datasets for an overall +2.03 mIoU improvement over the state of the art.",
-    stack: ["PyTorch", "Vision-Language Models", "Prompt Learning", "Computer Vision"],
+      "Developed a novel test-time optimization framework. Evaluated across 22 challenging domain specific datasets and obtained overall +2.03 mIoU improvement over the state-of-the-art.",
+    stack: ["Computer Vision", "VLMs", "Prompt Learning"],
     href: "https://arxiv.org/abs/2501.04696",
   },
   {
     title: "Spoken Named Entity Localization",
-    subtitle: "Text-independent PII removal from speech",
     period: "Mar 2024 — Present",
     category: "Language & Speech",
-    featured: true,
     description:
-      "A novel approach to locating and removing personally identifiable information in speech without relying on a transcript.",
-    result: "+4.1 frame-level F1 over the state of the art, using 67% fewer parameters at low latency.",
-    stack: ["NeMo", "NLP", "NER", "Spoken Language Understanding"],
+      "Developed a novel approach for text-independent PII removal in speech data. Achieved +4.1 frame-level F1 score, while using 67% fewer parameters and low latency over the state-of-the-art.",
+    stack: ["NLP", "NER", "Spoken Language Understanding"],
   },
   {
     title: "ProjectPulseAI",
-    subtitle: "RAG assistant for project managers",
     period: "Jan 2025",
     category: "Applications",
-    featured: true,
     description:
-      "An LLM-powered application that uses retrieval-augmented generation to pull project documents, company resources, web links, and Jira issue tracking into a single answerable surface.",
+      "Developed a LLM-powered application for project managers using Retrieval-Augmented Generation (RAG) to integrate project documents, company resources, web links, and Jira issue tracking.",
     stack: ["LLMs", "Groq", "RAG", "Next.js", "Jira API", "AstraDB"],
     href: "https://github.com/SasiniWanigathunga/ProjectPulseAI",
   },
   {
     title: "Ophthalmic Biomarker Detection",
-    subtitle: "IEEE SPS VIP Cup 2023 — Team TESSERACT",
     period: "Aug 2023 — Oct 2023",
     category: "Vision",
     description:
-      "Optimized an algorithm to predict the presence or absence of biomarkers on OCT scan images, testing preprocessing strategies, backbones, and classification-layer designs.",
-    result: "F1 score of 0.7921 — World Rank 6.",
-    stack: ["Computer Vision", "Deep Learning", "Medical Imaging"],
+      "Optimized the algorithm to predict the presence or absence of biomarkers on OCT scan images. Tested with different preprocessing techniques and backbones and optimized the model by changing the classification layers.",
+    stack: ["Computer Vision", "Deep Learning"],
     href: "https://github.com/SasiniWanigathunga/VIP-Cup-2023",
   },
   {
-    title: "SDC Tesseract",
-    subtitle: "Software Design Competition",
+    title: "Software Design Competition",
     period: "Jan 2024 — Jul 2024",
     category: "Applications",
     description:
-      "A browser-playable Unity/WebGL game with API authentication, player profiles, a dynamic interactive environment, an in-game questionnaire, and a live leaderboard.",
-    stack: ["Unity", "C#", "WebGL", "REST APIs"],
+      "Designed a game using Unity with WebGL including API authentication, player profile, a questionnaire that can be opened using a web browser, dynamic and interactive game environment and a leaderboard.",
+    stack: ["Unity", "C#"],
     href: "https://github.com/SasiniWanigathunga/SDC_Tesseract",
   },
   {
-    title: "Single-Cycle RISC-V Processor",
-    subtitle: "Non-pipelined 32-bit RV32I",
+    title: "Non-pipelined Single Stage (Cycle) RISC-V Processor Design",
     period: "Sep 2023 — Oct 2023",
     category: "Systems & Hardware",
     description:
-      "A 32-bit non-pipelined RISC-V processor built with microprogramming over a three-bus structure, implementing the RV32I instruction set.",
-    stack: ["SystemVerilog", "Xilinx", "Computer Architecture"],
+      "Designed a 32 bit non-pipelined RISC-V processor using Microprogramming with 3 bus structure using RV32I implementation.",
+    stack: ["SystemVerilog", "Xilinx"],
     href: "https://github.com/SasiniWanigathunga/Single_Cycle_RISCV_Processor",
   },
   {
     title: "Mini Weather Station",
-    subtitle: "Hardware to dashboard",
     period: "Jul 2023",
     category: "Systems & Hardware",
     description:
-      "An end-to-end weather station with custom PCB and enclosure design, remote monitoring through a web dashboard, and a companion mobile app.",
-    stack: ["Altium", "SolidWorks", "C++", "Embedded"],
+      "Developed a user-friendly mini weather station with remote monitoring via web dashboard and mobile app.",
+    stack: ["Altium", "SolidWorks", "C++"],
     href: "https://github.com/SasiniWanigathunga/Mini-Weather-Station",
   },
   {
-    title: "Chess-Playing Robot",
-    subtitle: "Robot Design & Competition",
+    title: "Robot Design and Competition",
     period: "Feb 2023",
     category: "Systems & Hardware",
     description:
-      "Simulation of a robot capable of identifying chess piece positions on a board and executing a checkmate sequence.",
-    stack: ["Arduino", "Webots", "C++", "Robotics"],
+      "Designed a simulation of a robot capable of identifying chess piece positions and performing checkmate.",
+    stack: ["Arduino", "Webots", "C++"],
     href: "https://github.com/SasiniWanigathunga/EN2533-RobotDesignandCompetition",
-  },
-  {
-    title: "Custom Object Detection with YOLO",
-    subtitle: "A novel bounding box metric",
-    period: "2025",
-    category: "Vision",
-    description:
-      "Custom object detection work exploring an alternative bounding box evaluation metric alongside standard YOLO training.",
-    stack: ["Python", "YOLO", "Object Detection"],
-    href: "https://github.com/SasiniWanigathunga/Custom-Object-Detection-and-Novel-Bounding-Box-Metric-with-YOLO",
-  },
-  {
-    title: "GPT-2 from Scratch",
-    subtitle: "Transformers, built up from first principles",
-    period: "2024",
-    category: "Language & Speech",
-    description:
-      "A ground-up implementation of GPT-2 alongside a wider set of transformer experiments, written to understand the architecture rather than call it.",
-    stack: ["Python", "PyTorch", "Transformers"],
-    href: "https://github.com/SasiniWanigathunga/GPT-2_from_scratch",
-  },
-  {
-    title: "Diabetic Retinopathy Severity Grading",
-    subtitle: "Medical image classification",
-    period: "2023",
-    category: "Vision",
-    description: "Severity grading of diabetic retinopathy from retinal fundus imagery.",
-    stack: ["Python", "Deep Learning", "Medical Imaging"],
-    href: "https://github.com/SasiniWanigathunga/Diabetic-Retinopathy-Severity-Grading",
-  },
-  {
-    title: "Naive Bayes from Scratch",
-    subtitle: "Classical ML, no libraries",
-    period: "2023",
-    category: "Language & Speech",
-    description: "A from-scratch Naive Bayes classifier implemented without machine learning libraries.",
-    stack: ["Python", "Statistics"],
-    href: "https://github.com/SasiniWanigathunga/Naive-Bayes-from-Scratch",
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/* Toolkit                                                             */
+/* Skills — the CV's own groupings                                     */
 /* ------------------------------------------------------------------ */
 
-export const toolkit = [
+export const skills = [
   {
-    group: "Languages",
-    items: ["Python", "C++", "C#", "SystemVerilog", "TypeScript"],
+    group: "Programming Languages",
+    items: ["Python", "C++", "C#"],
   },
   {
-    group: "ML & Research",
-    items: ["PyTorch", "TensorFlow", "OpenCV", "NeMo", "spaCy", "NLTK", "Hugging Face", "Kaggle"],
+    group: "Software & Tools",
+    items: ["VS Code", "Git / GitHub", "Hugging Face", "Kaggle", "Docker", "AWS", "MATLAB", "Unity", "Playwright"],
   },
   {
-    group: "LLM & Agents",
-    items: ["LangChain", "LangGraph", "RAG", "Groq", "AstraDB"],
-  },
-  {
-    group: "Engineering",
-    items: ["Docker", "AWS", "Git / GitHub", "Playwright", "MATLAB", "Unity", "VS Code"],
+    group: "Frameworks",
+    items: ["PyTorch", "TensorFlow", "spaCy", "NLTK", "NeMo", "OpenCV", "LangChain", "LangGraph"],
   },
 ] as const;
 
-export const certifications = [
-  { title: "Machine Learning Specialization", issuer: "DeepLearning.AI · Stanford University" },
-  { title: "Deep Learning Specialization", issuer: "DeepLearning.AI · Stanford University" },
+/** CV section: "Relevant Coursework — Coursera". */
+export const coursework = [
+  { title: "Machine Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
+  { title: "Deep Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
   { title: "Retrieval Augmented Generation (RAG)", issuer: "DeepLearning.AI" },
-  { title: "Machine Learning in the Enterprise", issuer: "Google Cloud" },
+  {
+    title: "Machine Learning in the Enterprise",
+    issuer: "Machine Learning on Google Cloud Specialization — Google Cloud",
+  },
 ] as const;
 
+export const aside = {
+  sports: "Chess — FIDE Rating 1219",
+  languages: "English (professional proficiency) · Sinhala (native proficiency)",
+} as const;
+
 /* ------------------------------------------------------------------ */
-/* Honors                                                              */
+/* Awards & Leadership                                                 */
 /* ------------------------------------------------------------------ */
 
 export const awards = [
   {
-    title: "IEEE SPS Video and Image Processing (VIP) Cup",
+    title: "IEEE SPS Video and Image Processing (VIP) Cup 2023",
     rank: "World Rank 6",
-    year: "2023",
-    detail: "Team TESSERACT — F1 score of 0.7921 for ophthalmic biomarker detection.",
+    period: "Aug — Sep 2023",
+    detail: "Team: TESSERACT. Achieved F1 score of 0.7921 for ophthalmic biomarkers detection.",
   },
   {
     title: "IEEEXtreme 17.0",
     rank: "World Rank 389",
-    year: "2023",
-    detail: "Country Rank 26 — 24-hour global programming competition.",
+    period: "Oct 2023",
+    detail: "Country Rank 26.",
   },
   {
     title: "IEEEXtreme 16.0",
     rank: "World Rank 874",
-    year: "2022",
-    detail: "Country Rank 61 — 24-hour global programming competition.",
+    period: "Oct 2022",
+    detail: "Country Rank 61.",
   },
   {
-    title: "Mahapola Higher Education Scholarship",
+    title: "Mahapola Higher Education (Merit) Scholarship",
     rank: "Merit",
-    year: "2021",
-    detail: "Awarded on GCE A/L performance — Island Rank 97 in the Physical Science stream.",
+    period: "Aug 2021",
+    detail: "",
   },
 ] as const;
 
@@ -366,17 +300,25 @@ export const leadership = [
   {
     org: "IEEE Industrial Electronics Society Student Branch Chapter",
     place: "University of Moratuwa",
-    roles: ["Secretary", "Chief Editor", "Assistant Editor", "Public Relations Team"],
+    roles: ["Secretary", "Chief Editor", "Assistant Editor", "Member of Public Relations Team"],
   },
   {
     org: "Electronic Club",
     place: "University of Moratuwa",
-    roles: ["Chairperson, two webinars", "Student Editor-in-Chief, E-Carrier magazine", "Editor", "Sub Editor"],
+    roles: [
+      "Chairperson for two webinars",
+      "Student Editor-in-Chief for the E-Carrier magazine",
+      "Editor",
+      "Sub Editor",
+    ],
   },
   {
     org: "AIESEC in Colombo South",
     place: "Sri Lanka",
-    roles: ["Content Specialist, PR & Marketing", "iGT International Relations & Matching"],
+    roles: [
+      "Content Specialist in Public Relations and Marketing Team",
+      "iGT International Relations and Matching Team",
+    ],
   },
 ] as const;
 
@@ -392,32 +334,30 @@ export const education = [
     degree: "B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering",
     period: "2021 — 2025",
     result: "GPA 3.90 / 4.0",
-    notes: ["Dean's List — semesters 1, 2, 3, 4, 6, 7 and 8"],
+    notes: ["Dean's List: semesters 1, 2, 3, 4, 6, 7 and 8"],
     coursework: [
       "Deep Learning for Vision",
       "Image Processing and Machine Vision",
       "Pattern Recognition",
-      "Neural Networks and Fuzzy Logic",
-      "Engineering Optimization",
+      "Introduction to Engineering Optimization",
       "Data Structures and Algorithms",
       "Applied Statistics",
       "Linear Algebra",
       "Calculus",
+      "Neural Networks and Fuzzy Logic",
       "Security in Cyber-Physical Systems",
     ],
   },
   {
     school: "Sujatha Vidyalaya",
     place: "Matara, Sri Lanka",
-    degree: "GCE Advanced Level — Physical Science stream",
+    degree: "GCE Advanced Level — Physical Science Stream",
     period: "2011 — 2019",
     result: "Z-score 2.6629",
-    notes: ["Island Rank 97", "4 A passes — Combined Mathematics, Physics, Chemistry, General English"],
+    notes: [
+      "Island Rank 97",
+      "4 A passes: Combined Mathematics, Physics, Chemistry, General English",
+    ],
     coursework: [],
   },
 ] as const;
-
-export const aside = {
-  chess: "Chess — FIDE rated 1219",
-  languages: "English (professional) · Sinhala (native)",
-} as const;

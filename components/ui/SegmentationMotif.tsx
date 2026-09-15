@@ -4,10 +4,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 
 /**
- * The hero's signature visual: a patch-resolution segmentation mask that
- * resolves region by region, the way an open-vocabulary segmenter commits to
- * labels — ending on a class it was never trained on. A nod to Seg-TTO
- * rather than a diagram of it.
+ * Abstract hero graphic: a patch grid whose regions resolve in sequence.
+ * Decoration only — it carries no claim and no text.
  *
  * The mask is hand-authored and static, so server and client render the same
  * markup and there is nothing to hydrate-mismatch.
@@ -35,7 +33,7 @@ const ROWS = MASK.length;
 const CELL = 10;
 const PAD = 0.85;
 
-/** Paint order — background settles first, the unseen class arrives last. */
+/** Paint order — the ground settles first, the accent region arrives last. */
 const REGION_ORDER: Record<string, number> = { "1": 0, "4": 1, "2": 2, "3": 3, "5": 4 };
 
 const REGION_STYLE: Record<string, { fill: string; opacity: number }> = {
@@ -79,23 +77,11 @@ export function SegmentationMotif() {
       <div className="relative rounded-sm border border-hairline bg-surface/70 p-3 backdrop-blur-sm sm:p-4">
         <CornerTicks />
 
-        <div className="mb-3 flex items-center justify-between border-b border-hairline pb-2.5">
-          <span className="label !text-[0.625rem]">mask · open vocabulary</span>
-          <span className="flex items-center gap-1.5">
-            <motion.span
-              className="block size-1.5 rounded-full bg-accent"
-              animate={reduce ? undefined : { opacity: [1, 0.25, 1] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <span className="label !text-[0.625rem]">test-time</span>
-          </span>
-        </div>
-
         <svg
           viewBox={`0 0 ${COLS * CELL} ${ROWS * CELL}`}
           className="w-full"
-          role="img"
-          aria-label="An abstract segmentation mask resolving into labelled regions, including one marked as an unseen class."
+          role="presentation"
+          aria-hidden
         >
           {/* Empty patch lattice sitting under the mask. */}
           <g>
@@ -140,7 +126,7 @@ export function SegmentationMotif() {
             })}
           </g>
 
-          {/* Optimization sweep — one pass, as the mask settles. */}
+          {/* A single sweep as the grid settles. */}
           {!reduce && (
             <motion.rect
               x={0}
@@ -153,56 +139,8 @@ export function SegmentationMotif() {
             />
           )}
         </svg>
-
-        <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
-          <span className="label !text-[0.625rem]">22 domain datasets</span>
-          <span className="font-mono text-[0.625rem] font-medium tracking-tight text-accent">
-            +2.03 mIoU
-          </span>
-        </div>
       </div>
-
-      {/* Floating label chips, anchored to their regions. The right-hand chip
-          overhangs the frame, so it only appears once there is room for it. */}
-      <Chip className="flex left-[4%] top-[46%]" delay={2.3} label="structure" tone="ink" />
-      <Chip className="hidden sm:flex right-[-6%] top-[24%]" delay={2.6} label="canopy" tone="ink" />
-      <Chip className="flex bottom-[16%] left-[38%]" delay={3.1} label="unseen class" tone="accent" />
     </div>
-  );
-}
-
-function Chip({
-  label,
-  className,
-  delay,
-  tone,
-}: {
-  label: string;
-  className: string;
-  delay: number;
-  tone: "ink" | "accent";
-}) {
-  const reduce = useReducedMotion();
-  const isAccent = tone === "accent";
-
-  return (
-    <motion.span
-      // `display` is set by the caller so a chip can be dropped at narrow widths.
-      className={`absolute z-10 items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[0.625rem] tracking-tight whitespace-nowrap shadow-sm backdrop-blur-md ${
-        isAccent
-          ? "border-accent/35 bg-accent text-paper"
-          : "border-hairline-strong bg-surface/90 text-ink-2"
-      } ${className}`}
-      initial={reduce ? { opacity: 1 } : { opacity: 0, y: 6, scale: 0.92 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={reduce ? { duration: 0 } : { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <span
-        className={`size-1 rounded-full ${isAccent ? "bg-paper" : "bg-accent"}`}
-        aria-hidden
-      />
-      {label}
-    </motion.span>
   );
 }
 

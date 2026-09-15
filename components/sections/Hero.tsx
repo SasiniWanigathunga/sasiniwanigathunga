@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { links, metrics, profile } from "@/lib/content";
+import { facts, links, profile } from "@/lib/content";
 import { asset } from "@/lib/utils";
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Scholar } from "@/components/ui/icons";
+import { ArrowUpRight, Download, Github, Linkedin, Mail, Scholar } from "@/components/ui/icons";
 import { RevealWords } from "@/components/ui/Reveal";
 import { SegmentationMotif } from "@/components/ui/SegmentationMotif";
 
@@ -19,7 +19,11 @@ export function Hero() {
   const fade = (delay: number) => ({
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: reduce ? 0.2 : 0.8, delay: reduce ? 0 : delay, ease: [0.16, 1, 0.3, 1] as const },
+    transition: {
+      duration: reduce ? 0.2 : 0.8,
+      delay: reduce ? 0 : delay,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
   });
 
   return (
@@ -28,7 +32,6 @@ export function Hero() {
 
       <div className="shell relative">
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-          {/* Statement */}
           <div className="lg:col-span-7">
             <motion.div {...fade(0.05)} className="flex flex-wrap items-center gap-x-3 gap-y-2">
               <span className="flex items-center gap-2 rounded-full border border-hairline bg-surface/60 py-1 pl-2 pr-3 backdrop-blur-sm">
@@ -50,41 +53,29 @@ export function Hero() {
 
             <h1 className="serif mt-6 text-[length:var(--text-display)] leading-[0.88] tracking-[-0.035em]">
               <RevealWords text={profile.firstName} className="block" delay={0.15} />
-              <RevealWords
-                text={profile.lastName}
-                className="block text-muted"
-                delay={0.24}
-              />
+              <RevealWords text={profile.lastName} className="block text-muted" delay={0.24} />
             </h1>
 
-            <motion.p
-              {...fade(0.5)}
-              className="serif mt-8 max-w-[34ch] text-2xl leading-[1.28] text-ink-2 balance md:text-[1.75rem]"
-            >
-              I build vision–language systems that hold up{" "}
-              <em className="not-italic text-accent">outside the datasets</em> they were trained on.
-            </motion.p>
-
-            <motion.div {...fade(0.62)} className="mt-10 flex flex-wrap items-center gap-3">
-              <a
-                href="#research"
-                className="group flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-85"
-              >
-                Read the research
-                <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
-              </a>
+            <motion.div {...fade(0.55)} className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href={asset(links.cv)}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="group flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-85"
+              >
+                <Download className="size-4" />
+                Curriculum vitae
+              </a>
+              <a
+                href={links.email}
                 className="group flex items-center gap-2 rounded-full border border-hairline-strong px-6 py-3 text-sm transition-colors hover:border-ink"
               >
-                Curriculum vitae
+                {profile.email}
                 <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </motion.div>
 
-            <motion.ul {...fade(0.72)} className="mt-10 flex items-center gap-1">
+            <motion.ul {...fade(0.65)} className="mt-8 flex items-center gap-1">
               {social.map(({ label, href, Icon }) => (
                 <li key={label}>
                   <a
@@ -102,17 +93,13 @@ export function Hero() {
             </motion.ul>
           </div>
 
-          {/* Signature visual */}
-          <motion.div
-            {...fade(0.35)}
-            className="flex justify-center lg:col-span-5 lg:justify-end"
-          >
+          <motion.div {...fade(0.35)} className="flex justify-center lg:col-span-5 lg:justify-end">
             <SegmentationMotif />
           </motion.div>
         </div>
       </div>
 
-      <MetricsMarquee />
+      <Facts />
     </section>
   );
 }
@@ -131,29 +118,23 @@ function BackdropRules() {
   );
 }
 
-/**
- * Headline numbers, scrolling. The track is duplicated so the -50% keyframe
- * lands on an identical frame and the loop is seamless.
- */
-function MetricsMarquee() {
-  const row = [...metrics, ...metrics];
-
+function Facts() {
   return (
-    <div className="relative mt-20 border-y border-hairline bg-paper-2/50 py-4 md:mt-28">
-      <div className="flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
-        <div className="marquee-track flex w-max shrink-0 items-center gap-12 pr-12 motion-reduce:animate-none">
-          {row.map((m, i) => (
-            <div key={`${m.value}-${i}`} className="flex items-baseline gap-2.5 whitespace-nowrap">
-              <span className="serif text-xl text-accent md:text-2xl">{m.value}</span>
-              <span className="text-[0.8rem] text-ink-2">{m.label}</span>
-              <span className="label !text-[0.6rem]">{m.context}</span>
-              <span aria-hidden className="ml-8 text-hairline-strong">
-                /
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="relative mt-20 border-y border-hairline bg-paper-2/50 md:mt-28">
+      <dl className="shell grid divide-y divide-hairline sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
+        {facts.map((fact) => (
+          <div
+            key={fact.label}
+            className="py-6 sm:border-l sm:border-hairline sm:px-6 sm:first:border-l-0 sm:first:pl-0 lg:py-7"
+          >
+            <dt className="label !text-[0.6rem]">{fact.label}</dt>
+            <dd className="mt-2">
+              <span className="serif block text-lg leading-snug text-ink">{fact.value}</span>
+              <span className="mt-1 block text-[0.8rem] leading-snug text-muted">{fact.note}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   );
 }

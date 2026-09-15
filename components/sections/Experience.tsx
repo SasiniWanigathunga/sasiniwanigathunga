@@ -6,18 +6,12 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 export function Experience() {
   return (
     <section id="experience" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading
-        index="02"
-        eyebrow="Experience"
-        title="From research bench to production surveillance."
-        lede="Three roles, one throughline: taking models that behave in a notebook and making them behave in the field."
-      />
+      <SectionHeading index="02" title="Experience" />
 
       <ol className="border-t border-hairline">
         {experience.map((role, i) => (
           <Reveal as="li" key={role.org} delay={0.05 * i}>
-            <article className="group grid gap-5 border-b border-hairline py-9 md:grid-cols-12 md:gap-8 md:py-11">
-              {/* Timeline column */}
+            <article className="grid gap-5 border-b border-hairline py-9 md:grid-cols-12 md:gap-8 md:py-11">
               <div className="md:col-span-3">
                 <div className="flex items-center gap-2.5">
                   <span
@@ -35,7 +29,6 @@ export function Experience() {
                 </div>
               </div>
 
-              {/* Body */}
               <div className="md:col-span-9">
                 <h3 className="serif flex flex-wrap items-baseline gap-x-3 text-2xl md:text-[1.75rem]">
                   {role.url ? (
@@ -71,20 +64,9 @@ export function Experience() {
                   ))}
                 </ul>
 
-                <p className="mt-5 max-w-[68ch] text-[0.95rem] leading-relaxed text-ink-2 pretty">
+                <p className="mt-5 max-w-[70ch] text-[0.95rem] leading-relaxed text-ink-2 pretty">
                   {role.description}
                 </p>
-
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {role.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="rounded-full border border-hairline px-2.5 py-1 font-mono text-[0.65rem] text-muted"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </article>
           </Reveal>
