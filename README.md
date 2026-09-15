@@ -1,6 +1,6 @@
 # Sasini Wanigathunga
 
-AI Research Engineer at [Robotic Assistance Devices](https://www.radsecurity.ai/)
+AI Research Engineer at [Robotic Assistance Devices](https://radsecurity.com/)
 B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, University of Moratuwa
 
 **[sasiniwanigathunga.github.io/sasiniwanigathunga](https://sasiniwanigathunga.github.io/sasiniwanigathunga/)**

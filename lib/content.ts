@@ -32,7 +32,7 @@ export const links = {
   scholar: "https://scholar.google.com/citations?user=_GKqZqwAAAAJ&hl=en",
   arxiv: "https://arxiv.org/abs/2501.04696",
   cv: "/Sasini_Wanigathunga_CV.pdf",
-  rad: "https://www.radsecurity.ai/",
+  rad: "https://radsecurity.com/",
   uom: "https://uom.lk/",
 } as const;
 
