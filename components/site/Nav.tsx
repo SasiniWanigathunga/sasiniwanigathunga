@@ -71,16 +71,6 @@ export function Nav() {
 
             <ThemeToggle />
 
-            <a
-              href={asset(links.cv)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[0.78rem] font-medium text-paper transition-opacity hover:opacity-85 sm:flex"
-            >
-              <Download className="size-3.5" />
-              CV
-            </a>
-
             <button
               type="button"
               onClick={() => setMenuOpen(true)}

@@ -4,11 +4,17 @@ import { asset } from "@/lib/utils";
 import { Download, Github, Linkedin, Mail, Scholar } from "@/components/ui/icons";
 import { PatchGrid } from "@/components/ui/PatchGrid";
 
+/**
+ * The CV sits in this list rather than in a button of its own, so every way off
+ * the panel reads as one column of links. `asset` is build-time constant, so
+ * calling it here costs nothing.
+ */
 const externalLinks = [
   { label: "Email", value: profile.email, href: links.email, Icon: Mail },
   { label: "LinkedIn", value: "in/sasiniwanigathunga", href: links.linkedin, Icon: Linkedin },
   { label: "GitHub", value: "@SasiniWanigathunga", href: links.github, Icon: Github },
   { label: "Google Scholar", value: "Publications", href: links.scholar, Icon: Scholar },
+  { label: "Curriculum vitae", value: "PDF", href: asset(links.cv), Icon: Download },
 ];
 
 /**
@@ -76,16 +82,6 @@ function PanelBody() {
           </li>
         ))}
       </ul>
-
-      <a
-        href={asset(links.cv)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[0.8rem] font-medium text-paper transition-opacity hover:opacity-85"
-      >
-        <Download className="size-3.5" />
-        Curriculum vitae
-      </a>
     </div>
   );
 }
