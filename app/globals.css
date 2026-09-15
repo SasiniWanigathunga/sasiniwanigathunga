@@ -166,21 +166,44 @@
 /* ------------------------------------------------------------------ */
 
 @layer utilities {
-  /* The measured column everything on the page lines up against. */
+  /*
+   * The single reading column the whole page lines up against — an academic
+   * homepage, not a wide marketing layout.
+   */
   .shell {
     width: 100%;
-    max-width: 78rem;
+    max-width: 46rem;
     margin-inline: auto;
     padding-inline: 1.25rem;
   }
   @media (min-width: 768px) {
     .shell {
-      padding-inline: 2.5rem;
+      padding-inline: 2rem;
     }
   }
-  @media (min-width: 1280px) {
-    .shell {
-      padding-inline: 3.5rem;
+
+  /* Slightly wider, for the sticky bar that frames the column. */
+  .shell-wide {
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .shell-wide {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Section rhythm — consistent spacing between every block on the page. */
+  .section {
+    scroll-margin-top: 6rem;
+    padding-block: 3rem;
+    border-top: 1px solid var(--c-hairline);
+  }
+  @media (min-width: 768px) {
+    .section {
+      padding-block: 4rem;
     }
   }
 

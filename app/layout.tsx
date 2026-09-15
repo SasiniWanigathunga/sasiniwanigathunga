@@ -29,7 +29,7 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} — ${profile.role}`,
+    default: `${profile.name} — AI Research Engineer`,
     template: `%s — ${profile.name}`,
   },
   description,
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "profile",
     url: siteUrl,
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} — AI Research Engineer`,
     description,
     siteName: profile.name,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} — AI Research Engineer`,
     description,
   },
   robots: { index: true, follow: true },
@@ -83,8 +83,8 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
-  jobTitle: profile.role,
-  worksFor: { "@type": "Organization", name: profile.company },
+  jobTitle: "AI Research Engineer",
+  worksFor: { "@type": "Organization", name: "Robotic Assistance Devices" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "University of Moratuwa" },
   url: siteUrl,
   email: profile.email,

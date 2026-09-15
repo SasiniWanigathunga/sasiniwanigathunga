@@ -4,59 +4,56 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Skills() {
   return (
-    <section id="skills" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading index="04" title="Skills" />
+    <section id="skills" className="shell section">
+      <SectionHeading title="Skills" />
 
-      <div className="grid gap-x-10 gap-y-12 md:grid-cols-3">
+      <dl className="space-y-5">
         {skills.map((group, i) => (
-          <Reveal key={group.group} delay={0.05 * i}>
-            <div>
-              <h3 className="label border-b border-hairline pb-3">{group.group}</h3>
-              <ul className="mt-5 space-y-2.5">
+          <Reveal key={group.group} delay={0.03 * i}>
+            <div className="grid gap-x-4 gap-y-1.5 sm:grid-cols-[6.5rem_1fr]">
+              <dt className="label !text-[0.625rem] sm:pt-1">{group.group}</dt>
+              <dd className="flex flex-wrap gap-1.5">
                 {group.items.map((item) => (
-                  <li
+                  <span
                     key={item}
-                    className="group flex items-baseline gap-3 text-[0.95rem] text-ink-2 transition-colors hover:text-ink"
+                    className="rounded border border-hairline px-2 py-0.5 font-mono text-[0.68rem] text-ink-2 transition-colors hover:border-accent hover:text-accent"
                   >
-                    <span
-                      aria-hidden
-                      className="h-px w-3 shrink-0 bg-hairline-strong transition-all group-hover:w-5 group-hover:bg-accent"
-                    />
                     {item}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </dd>
             </div>
           </Reveal>
         ))}
+
+        <Reveal delay={0.12}>
+          <div className="grid gap-x-4 gap-y-1.5 sm:grid-cols-[6.5rem_1fr]">
+            <dt className="label !text-[0.625rem] sm:pt-1">Languages</dt>
+            <dd className="text-[0.925rem] text-ink-2">{aside.languages}</dd>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.14}>
+          <div className="grid gap-x-4 gap-y-1.5 sm:grid-cols-[6.5rem_1fr]">
+            <dt className="label !text-[0.625rem] sm:pt-1">Sports</dt>
+            <dd className="text-[0.925rem] text-ink-2">{aside.sports}</dd>
+          </div>
+        </Reveal>
+      </dl>
+
+      <div className="mt-12">
+        <SectionHeading title="Relevant Coursework" aside={<span className="label">Coursera</span>} />
+        <ul className="space-y-3">
+          {coursework.map((course, i) => (
+            <Reveal as="li" key={course.title} delay={0.03 * i}>
+              <div className="flex flex-wrap items-baseline gap-x-2.5">
+                <span className="text-[0.95rem] text-ink">{course.title}</span>
+                <span className="text-[0.8rem] text-muted">{course.issuer}</span>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
       </div>
-
-      <Reveal delay={0.15}>
-        <div className="mt-20 border-t border-hairline pt-10">
-          <h3 className="label mb-6">Relevant Coursework — Coursera</h3>
-          <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
-            {coursework.map((course) => (
-              <li key={course.title}>
-                <p className="serif text-[1.05rem] leading-snug text-ink">{course.title}</p>
-                <p className="mt-1 text-[0.8rem] text-muted">{course.issuer}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Reveal>
-
-      <Reveal delay={0.2}>
-        <dl className="mt-12 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
-          <div>
-            <dt className="label !text-[0.6rem]">Languages</dt>
-            <dd className="mt-2 text-[0.95rem] text-ink-2">{aside.languages}</dd>
-          </div>
-          <div>
-            <dt className="label !text-[0.6rem]">Sports</dt>
-            <dd className="mt-2 text-[0.95rem] text-ink-2">{aside.sports}</dd>
-          </div>
-        </dl>
-      </Reveal>
     </section>
   );
 }

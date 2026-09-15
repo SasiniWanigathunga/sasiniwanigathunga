@@ -2,14 +2,15 @@ import { CommandPaletteProvider } from "@/components/site/CommandPalette";
 import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { About } from "@/components/sections/About";
 import { Awards } from "@/components/sections/Awards";
-import { Contact } from "@/components/sections/Contact";
 import { Education } from "@/components/sections/Education";
 import { Experience } from "@/components/sections/Experience";
-import { Hero } from "@/components/sections/Hero";
+import { Header } from "@/components/sections/Header";
 import { Projects } from "@/components/sections/Projects";
-import { Research } from "@/components/sections/Research";
+import { Publications } from "@/components/sections/Publications";
 import { Skills } from "@/components/sections/Skills";
+import { Updates } from "@/components/sections/Updates";
 
 export default function Home() {
   return (
@@ -18,14 +19,15 @@ export default function Home() {
       <Nav />
 
       <main id="main">
-        <Hero />
-        <Research />
+        <Header />
+        <About />
+        <Updates />
+        <Publications />
         <Experience />
         <Projects />
-        <Skills />
         <Awards />
         <Education />
-        <Contact />
+        <Skills />
       </main>
 
       <Footer />
