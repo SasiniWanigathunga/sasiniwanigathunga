@@ -126,11 +126,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ProfilePanelRail />
           {/* The left offset matches the rail's width; the top padding clears
               the fixed nav on every page. */}
-          <main id="main" className="flex-1 pt-20 lg:pl-[17rem] lg:pt-24">
+          <main id="main" className="flex-1 pt-20 lg:pl-[var(--rail-w)] lg:pt-24">
             <ProfilePanelInline />
             {children}
           </main>
-          <div className="lg:pl-[17rem]">
+          <div className="lg:pl-[var(--rail-w)]">
             <Footer />
           </div>
         </CommandPaletteProvider>

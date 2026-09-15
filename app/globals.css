@@ -26,6 +26,13 @@
   /* Scrim behind modals — always darkens, in either theme. */
   --c-veil: rgb(20 18 14 / 0.32);
 
+  /*
+   * Width of the fixed profile rail. The rail's own width, the nav's left
+   * padding and the content offset all read this, so the layout stays in
+   * step when it changes.
+   */
+  --rail-w: 19.5rem;
+
   /* Segmentation-motif hues, tuned to sit quietly on paper. */
   --seg-1: #9a3b28;
   --seg-2: #3f5f52;

@@ -392,3 +392,9 @@ export const topics: Topic[] = [
   { href: "/education", label: "Education", count: education.length },
   { href: "/skills", label: "Skills" },
 ];
+
+/**
+ * What the navigation shows. Home is not a topic — it has no index card and
+ * no count — so it is added here rather than to `topics`.
+ */
+export const navItems: Topic[] = [{ href: "/", label: "Home" }, ...topics];

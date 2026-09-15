@@ -70,12 +70,13 @@ that. Because it sits in the layout rather than in a page, it is not remounted o
 | `/experience` | `app/experience/page.tsx` |
 | `/projects` | `app/projects/page.tsx` |
 | `/awards` | `app/awards/page.tsx` — awards and leadership |
-| `/education` | `app/education/page.tsx` |
-| `/skills` | `app/skills/page.tsx` — skills and Coursera coursework |
+| `/education` | `app/education/page.tsx` — schools and Coursera coursework |
+| `/skills` | `app/skills/page.tsx` |
 
 Adding a page means creating `app/<name>/page.tsx` and adding an entry to `topics` at the bottom of
-[`lib/content.ts`](lib/content.ts) — the nav, the home page index, the ⌘K palette and the prev/next
-links at the foot of each page are all driven from that one array.
+[`lib/content.ts`](lib/content.ts) — the nav, the home page index and the ⌘K palette are all driven
+from that one array. `navItems` is `topics` with Home prepended; Home is not a topic, so it has no
+index card and no count.
 
 **Editing content.** All content — roles, publications, projects, skills, awards, education — lives in
 [`lib/content.ts`](lib/content.ts), sourced verbatim from the CV, arXiv and Google Scholar. Change it

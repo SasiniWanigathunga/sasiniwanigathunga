@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { links, profile, topics } from "@/lib/content";
+import { links, navItems, profile } from "@/lib/content";
 import { asset, cx, samePath } from "@/lib/utils";
 import { Close, Download, Menu, Search } from "@/components/ui/icons";
 import { ThemeToggle } from "./ThemeToggle";
@@ -24,14 +24,14 @@ export function Nav() {
       {/* Content now starts immediately below the bar on every page, so the
           bar is always opaque rather than fading in on scroll. */}
       <header className="no-print fixed inset-x-0 top-0 z-50 border-b border-hairline bg-paper/85 backdrop-blur-xl">
-        <div className="shell-wide flex h-14 items-center gap-4 lg:pl-[17rem]">
+        <div className="shell-wide flex h-14 items-center gap-4 lg:pl-[var(--rail-w)]">
           {/* Hidden on wide screens, where the left rail already shows the name. */}
           <Link href="/" className="serif shrink-0 text-[0.95rem] lg:hidden">
             {profile.name}
           </Link>
 
           <nav className="ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Pages">
-            {topics.map((topic) => {
+            {navItems.map((topic) => {
               const active = samePath(pathname, topic.href);
               return (
                 <Link
@@ -115,7 +115,7 @@ export function Nav() {
             </div>
 
             <nav className="shell-wide mt-4 flex flex-col pb-10" aria-label="Pages">
-              {[{ href: "/", label: "Home" }, ...topics].map((topic, i) => (
+              {navItems.map((topic, i) => (
                 <motion.div
                   key={topic.href}
                   initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
