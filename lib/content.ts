@@ -9,18 +9,8 @@
  * names, phone numbers and email addresses. Those remain in the PDF.
  */
 
-export type NavItem = { id: string; label: string };
-
-export const nav: NavItem[] = [
-  { id: "about", label: "About" },
-  { id: "updates", label: "Updates" },
-  { id: "publications", label: "Publications" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "awards", label: "Awards" },
-  { id: "education", label: "Education" },
-  { id: "skills", label: "Skills" },
-];
+/** Each topic is its own route. Declared at the bottom of this file. */
+export type Topic = { href: string; label: string; count?: number };
 
 export const profile = {
   name: "Sasini Wanigathunga",
@@ -385,3 +375,20 @@ export const aside = {
   sports: "Chess — FIDE Rating 1219",
   languages: "English (professional proficiency) · Sinhala (native proficiency)",
 } as const;
+
+/* ------------------------------------------------------------------ */
+/* Routes                                                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Declared last so the counts are derived from the data above rather than
+ * written out by hand and left to drift.
+ */
+export const topics: Topic[] = [
+  { href: "/publications", label: "Publications", count: publications.length },
+  { href: "/experience", label: "Experience", count: experience.length },
+  { href: "/projects", label: "Projects", count: projects.length },
+  { href: "/awards", label: "Awards", count: awards.length },
+  { href: "/education", label: "Education", count: education.length },
+  { href: "/skills", label: "Skills" },
+];

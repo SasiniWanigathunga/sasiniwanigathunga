@@ -2,37 +2,19 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
-import { links, publications } from "@/lib/content";
+import { publications } from "@/lib/content";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export function Publications() {
+export function PublicationList() {
   return (
-    <section id="publications" className="shell section">
-      <SectionHeading
-        title="Publications"
-        aside={
-          <a
-            href={links.scholar}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="label link-underline inline-flex items-center gap-1.5 hover:!text-ink"
-          >
-            Google Scholar
-            <ArrowUpRight className="size-3" />
-          </a>
-        }
-      />
-
-      <ol className="space-y-7">
-        {publications.map((pub) => (
-          <Reveal as="li" key={pub.title}>
-            <Entry pub={pub} />
-          </Reveal>
-        ))}
-      </ol>
-    </section>
+    <ol className="space-y-9">
+      {publications.map((pub) => (
+        <Reveal as="li" key={pub.title}>
+          <Entry pub={pub} />
+        </Reveal>
+      ))}
+    </ol>
   );
 }
 
@@ -45,7 +27,7 @@ function Entry({ pub }: { pub: (typeof publications)[number] }) {
       <span className="label !text-[0.625rem] sm:pt-1.5">{pub.date}</span>
 
       <div>
-        <h3 className="serif text-[1.15rem] leading-snug">
+        <h2 className="serif text-[1.15rem] leading-snug">
           <a
             href={pub.links[0].href}
             target="_blank"
@@ -54,7 +36,7 @@ function Entry({ pub }: { pub: (typeof publications)[number] }) {
           >
             {pub.title}
           </a>
-        </h3>
+        </h2>
 
         <p className="mt-2 text-[0.85rem] leading-relaxed text-muted">
           {pub.authors.map((author, i) => (

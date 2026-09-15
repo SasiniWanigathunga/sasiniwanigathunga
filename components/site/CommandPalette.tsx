@@ -11,14 +11,15 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { links, nav, projects, profile } from "@/lib/content";
+import { links, projects, profile, topics } from "@/lib/content";
+import { useRouter } from "next/navigation";
 import { asset, cx } from "@/lib/utils";
 import { ArrowUpRight, Close, Search } from "@/components/ui/icons";
 
 type Command = {
   id: string;
   label: string;
-  group: "Sections" | "Elsewhere" | "Projects";
+  group: "Pages" | "Elsewhere" | "Projects";
   hint?: string;
   href: string;
   external?: boolean;
@@ -31,13 +32,16 @@ export function useCommandPalette() {
 }
 
 function buildCommands(): Command[] {
-  const sections: Command[] = nav.map((item) => ({
-    id: `section-${item.id}`,
-    label: item.label,
-    group: "Sections",
-    hint: "Jump to section",
-    href: `#${item.id}`,
-  }));
+  const pages: Command[] = [
+    { id: "page-home", label: "Home", group: "Pages", hint: "/", href: "/" },
+    ...topics.map((topic) => ({
+      id: `page-${topic.href}`,
+      label: topic.label,
+      group: "Pages" as const,
+      hint: topic.href,
+      href: topic.href,
+    })),
+  ];
 
   const elsewhere: Command[] = [
     { id: "cv", label: "Download CV", group: "Elsewhere", hint: "PDF", href: asset(links.cv), external: true },
@@ -59,10 +63,11 @@ function buildCommands(): Command[] {
       external: true,
     }));
 
-  return [...sections, ...elsewhere, ...projectCommands];
+  return [...pages, ...elsewhere, ...projectCommands];
 }
 
 export function CommandPaletteProvider({ children }: { children: ReactNode }) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [cursor, setCursor] = useState(0);
@@ -94,10 +99,10 @@ export function CommandPaletteProvider({ children }: { children: ReactNode }) {
       if (command.external) {
         window.open(command.href, "_blank", "noopener,noreferrer");
       } else {
-        document.getElementById(command.href.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
+        router.push(command.href);
       }
     },
-    [close],
+    [close, router],
   );
 
   // Global shortcut: Cmd/Ctrl + K.
@@ -187,7 +192,7 @@ export function CommandPaletteProvider({ children }: { children: ReactNode }) {
                     setQuery(e.target.value);
                     setCursor(0);
                   }}
-                  placeholder="Search sections, projects, links…"
+                  placeholder="Search pages, projects, links…"
                   className="w-full bg-transparent py-3.5 text-[0.95rem] text-ink outline-none placeholder:text-muted"
                   aria-label="Search"
                 />

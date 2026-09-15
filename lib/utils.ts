@@ -14,3 +14,13 @@ export function asset(path: string): string {
 export function cx(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(" ");
 }
+
+/**
+ * Route comparison that ignores a trailing slash. `trailingSlash: true` in
+ * next.config means `usePathname()` can return either form depending on how
+ * the page was reached, so comparing raw strings misses the active page.
+ */
+export function samePath(a: string | null, b: string): boolean {
+  const trim = (v: string) => (v.length > 1 ? v.replace(/\/+$/, "") : v);
+  return a !== null && trim(a) === trim(b);
+}

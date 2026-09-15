@@ -1,70 +1,79 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
-import { useState } from "react";
-import { links, nav, profile } from "@/lib/content";
-import { asset, cx } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { links, profile, topics } from "@/lib/content";
+import { asset, cx, samePath } from "@/lib/utils";
 import { Close, Download, Menu, Search } from "@/components/ui/icons";
 import { ThemeToggle } from "./ThemeToggle";
-import { useActiveSection } from "./useActiveSection";
 import { useCommandPalette } from "./CommandPalette";
-
-const SECTION_IDS = nav.map((n) => n.id);
 
 export function Nav() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const active = useActiveSection(SECTION_IDS);
+  const pathname = usePathname();
   const { open: openPalette } = useCommandPalette();
   const reduce = useReducedMotion();
 
+  const isHome = samePath(pathname, "/");
+
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 40));
+
+  // Close the mobile menu whenever a navigation actually happens.
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   return (
     <>
       <header
         className={cx(
           "no-print fixed inset-x-0 top-0 z-50 transition-all duration-500",
-          scrolled
+          scrolled || !isHome
             ? "border-b border-hairline bg-paper/85 backdrop-blur-xl"
             : "border-b border-transparent",
         )}
       >
         <div className="shell-wide flex h-14 items-center gap-4">
-          <a
-            href="#top"
+          {/* On the home page the name is already in the header below, so it
+              only appears here once that has scrolled away. */}
+          <Link
+            href="/"
             className={cx(
               "serif shrink-0 text-[0.95rem] transition-all duration-500",
-              scrolled ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0",
+              !isHome || scrolled ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0",
             )}
-            aria-label="Back to top"
           >
             {profile.name}
-          </a>
+          </Link>
 
-          <nav className="ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Sections">
-            {nav.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={cx(
-                  "relative rounded-full px-2.5 py-1.5 text-[0.8rem] transition-colors",
-                  active === item.id ? "text-ink" : "text-muted hover:text-ink",
-                )}
-              >
-                {active === item.id && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-paper-2"
-                    transition={
-                      reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 38 }
-                    }
-                  />
-                )}
-                <span className="relative">{item.label}</span>
-              </a>
-            ))}
+          <nav className="ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Pages">
+            {topics.map((topic) => {
+              const active = samePath(pathname, topic.href);
+              return (
+                <Link
+                  key={topic.href}
+                  href={topic.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cx(
+                    "relative rounded-full px-2.5 py-1.5 text-[0.8rem] transition-colors",
+                    active ? "text-ink" : "text-muted hover:text-ink",
+                  )}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-full bg-paper-2"
+                      transition={
+                        reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 38 }
+                      }
+                    />
+                  )}
+                  <span className="relative">{topic.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="ml-auto flex items-center gap-1.5 lg:ml-2">
@@ -105,7 +114,7 @@ export function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="no-print fixed inset-0 z-[110] bg-paper lg:hidden"
+            className="no-print fixed inset-0 z-[110] overflow-y-auto bg-paper lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -123,39 +132,45 @@ export function Nav() {
               </button>
             </div>
 
-            <nav className="shell-wide mt-4 flex flex-col" aria-label="Sections">
-              {nav.map((item, i) => (
-                <motion.a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setMenuOpen(false)}
+            <nav className="shell-wide mt-4 flex flex-col pb-10" aria-label="Pages">
+              {[{ href: "/", label: "Home" }, ...topics].map((topic, i) => (
+                <motion.div
+                  key={topic.href}
                   initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: reduce ? 0 : 0.35, delay: reduce ? 0 : 0.04 * i }}
-                  className="serif border-b border-hairline py-3.5 text-2xl"
                 >
-                  {item.label}
-                </motion.a>
+                  <Link
+                    href={topic.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={cx(
+                      "serif block border-b border-hairline py-3.5 text-2xl",
+                      samePath(pathname, topic.href) ? "text-accent" : "",
+                    )}
+                  >
+                    {topic.label}
+                  </Link>
+                </motion.div>
               ))}
-            </nav>
 
-            <div className="shell-wide mt-6 flex flex-wrap gap-2.5">
-              <a
-                href={asset(links.cv)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper"
-              >
-                <Download className="size-4" />
-                CV
-              </a>
-              <a
-                href={links.email}
-                className="flex items-center gap-2 rounded-full border border-hairline-strong px-5 py-2.5 text-sm"
-              >
-                Email
-              </a>
-            </div>
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                <a
+                  href={asset(links.cv)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper"
+                >
+                  <Download className="size-4" />
+                  CV
+                </a>
+                <a
+                  href={links.email}
+                  className="flex items-center gap-2 rounded-full border border-hairline-strong px-5 py-2.5 text-sm"
+                >
+                  Email
+                </a>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

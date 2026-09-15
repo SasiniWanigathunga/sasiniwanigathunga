@@ -1,21 +1,18 @@
 import { links, projects } from "@/lib/content";
 import { ArrowUpRight, Github } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export function Projects() {
+export function ProjectList() {
   return (
-    <section id="projects" className="shell section">
-      <SectionHeading title="Projects" aside={<span className="label">{projects.length}</span>} />
-
-      <ol className="space-y-7">
+    <>
+      <ol className="space-y-9">
         {projects.map((project, i) => (
           <Reveal as="li" key={project.title} delay={0.03 * i}>
             <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
               <span className="label !text-[0.625rem] sm:pt-1.5">{project.period}</span>
 
               <div>
-                <h3 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem] leading-snug">
+                <h2 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem] leading-snug">
                   {project.href ? (
                     <a
                       href={project.href}
@@ -34,7 +31,7 @@ export function Projects() {
                       {project.note}
                     </span>
                   )}
-                </h3>
+                </h2>
 
                 <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-2 pretty">
                   {project.description}
@@ -61,13 +58,13 @@ export function Projects() {
           href={links.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-8 inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-[0.8rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+          className="group mt-10 inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-[0.8rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
         >
           <Github className="size-3.5" />
           All repositories
           <ArrowUpRight className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </Reveal>
-    </section>
+    </>
   );
 }

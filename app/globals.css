@@ -37,25 +37,26 @@
 }
 
 [data-theme="dark"] {
-  /* Night library — same editorial structure, inverted ground. */
-  --c-paper: #100f0d;
-  --c-paper-2: #171613;
-  --c-surface: #1b1915;
-  --c-ink: #f4f0e8;
-  --c-ink-2: #d2cbbc;
-  --c-muted: #948c7d;
-  --c-hairline: #29261f;
-  --c-hairline-strong: #3b372e;
-  --c-accent: #e08060;
-  --c-accent-soft: #2a1c16;
-  --c-shadow: 0 0 0;
-  --c-veil: rgb(0 0 0 / 0.62);
+  /* Deep navy — nothing on the page sits at or near black. */
+  --c-paper: #121c33;
+  --c-paper-2: #17223c;
+  --c-surface: #1b2846;
+  --c-ink: #eaeff8;
+  --c-ink-2: #bfcadf;
+  --c-muted: #7f8fad;
+  --c-hairline: #26355a;
+  --c-hairline-strong: #36497a;
+  --c-accent: #f0895f;
+  /* Warm-tinted chip ground, so accent chips still read as accents on navy. */
+  --c-accent-soft: #3a2b33;
+  --c-shadow: 4 8 20;
+  --c-veil: rgb(6 11 24 / 0.66);
 
-  --seg-1: #e08060;
-  --seg-2: #79a893;
-  --seg-3: #d0a862;
-  --seg-4: #8fa3cc;
-  --seg-5: #c08fa8;
+  --seg-1: #f0895f;
+  --seg-2: #6fc0a8;
+  --seg-3: #e6b86a;
+  --seg-4: #7fa0e0;
+  --seg-5: #c98fc0;
 
   color-scheme: dark;
 }

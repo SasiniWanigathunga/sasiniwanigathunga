@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import { profile, links } from "@/lib/content";
+import { CommandPaletteProvider } from "@/components/site/CommandPalette";
+import { Footer } from "@/components/site/Footer";
+import { Nav } from "@/components/site/Nav";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -65,7 +69,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fbfaf7" },
-    { media: "(prefers-color-scheme: dark)", color: "#100f0d" },
+    { media: "(prefers-color-scheme: dark)", color: "#121c33" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -106,14 +110,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="grain antialiased">
+      <body className="grain flex min-h-screen flex-col antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-paper"
         >
           Skip to content
         </a>
-        {children}
+
+        {/* Chrome is shared by every route so it survives client navigation. */}
+        <CommandPaletteProvider>
+          <ScrollProgress />
+          <Nav />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </CommandPaletteProvider>
       </body>
     </html>
   );

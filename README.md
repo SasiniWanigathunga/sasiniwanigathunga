@@ -57,9 +57,30 @@ NEXT_PUBLIC_BASE_PATH=/sasiniwanigathunga npm run build
 **Deployment.** Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
 which type-checks, builds the static export, and publishes to GitHub Pages.
 
+**Pages.** Each topic is its own route, statically exported:
+
+| Route | Source |
+|---|---|
+| `/` | `app/page.tsx` — photo header, About, Updates, index |
+| `/publications` | `app/publications/page.tsx` |
+| `/experience` | `app/experience/page.tsx` |
+| `/projects` | `app/projects/page.tsx` |
+| `/awards` | `app/awards/page.tsx` — awards and leadership |
+| `/education` | `app/education/page.tsx` |
+| `/skills` | `app/skills/page.tsx` — skills and Coursera coursework |
+
+Adding a page means creating `app/<name>/page.tsx` and adding an entry to `topics` at the bottom of
+[`lib/content.ts`](lib/content.ts) — the nav, the home page index, the ⌘K palette and the prev/next
+links at the foot of each page are all driven from that one array.
+
 **Editing content.** All content — roles, publications, projects, skills, awards, education — lives in
 [`lib/content.ts`](lib/content.ts), sourced verbatim from the CV, arXiv and Google Scholar. Change it
-there and every section follows. The CV PDF served by the site is `public/Sasini_Wanigathunga_CV.pdf`.
+there and every page follows. The CV PDF served by the site is `public/Sasini_Wanigathunga_CV.pdf`,
+and the profile photo is `public/profile.jpg`.
+
+**Theming.** Both palettes are CSS custom properties at the top of [`app/globals.css`](app/globals.css) —
+warm paper for light, deep navy for dark. The theme is resolved before first paint by an inline script
+in `app/layout.tsx`, so there is no flash of the wrong palette.
 
 **Moving to a custom domain.** Set `NEXT_PUBLIC_BASE_PATH` in the workflow to an empty string, add a
 `public/CNAME` file containing the domain, and update `siteUrl` in [`app/layout.tsx`](app/layout.tsx).
