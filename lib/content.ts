@@ -243,25 +243,24 @@ export const projects: Project[] = [
 
 export const awards = [
   /*
-   * Both conferred at the University of Moratuwa Annual Awards Ceremony 2026.
-   * "Prof. K.K.Y.W. Perera Award" and its criterion are the Department of
-   * Electronic and Telecommunication Engineering's own wording. The official
-   * full title of the Patuwathavithane award could not be confirmed from a
-   * public source - check it against the ceremony programme before relying on
-   * the spelling here.
+   * Both conferred at the University of Moratuwa Awards Ceremony 2026. Titles
+   * and dates are as listed under Honours on the LinkedIn profile. The Perera
+   * award's criterion is the Department of Electronic and Telecommunication
+   * Engineering's own wording; no public source states the criterion for the
+   * Patuwathavithane award, so it carries no description.
    */
+  {
+    period: "Sep 2026",
+    title: "Prof. C. Patuwathavithane Memorial Award",
+    rank: "University of Moratuwa",
+    detail: "",
+  },
   {
     period: "Sep 2026",
     title: "Prof. K.K.Y.W. Perera Award",
     rank: "University of Moratuwa",
     detail:
       "Awarded for the highest grade point average considering all subjects offered at level 4, Department of Electronic and Telecommunication Engineering.",
-  },
-  {
-    period: "Sep 2026",
-    title: "Patuwathavithane Award",
-    rank: "University of Moratuwa",
-    detail: "",
   },
   {
     period: "Aug - Sep 2023",
