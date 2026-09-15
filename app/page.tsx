@@ -1,5 +1,5 @@
 import { About } from "@/components/home/About";
-import { TopicIndex } from "@/components/home/TopicIndex";
+import { TopicList } from "@/components/home/TopicList";
 import { Updates } from "@/components/home/Updates";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <About />
       <Updates />
-      <TopicIndex />
+      <TopicList />
     </>
   );
 }
