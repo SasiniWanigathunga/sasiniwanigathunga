@@ -34,6 +34,7 @@ export const links = {
   cv: "/Sasini_Wanigathunga_CV.pdf",
   rad: "https://radsecurity.com/",
   uom: "https://uom.lk/",
+  medium: "https://medium.com/@wanigathungasasini",
 } as const;
 
 /**
@@ -391,6 +392,33 @@ export const coursework = [
   },
 ] as const;
 
+/* ------------------------------------------------------------------ */
+/* Blog                                                                */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Posts on Medium, newest first. Titles, dates and URLs are taken from the
+ * profile's RSS feed; each summary condenses the article's own opening lines
+ * rather than describing it afresh. Add a post here when one is published -
+ * nothing reads the feed at runtime, so the list does not update itself.
+ */
+export const posts = [
+  {
+    date: "Dec 2023",
+    title: "An In-Depth Exploration of Naïve Bayes: From Theory to Implementation in Python",
+    summary:
+      "The theory behind Naïve Bayes and its mathematical foundation, followed by an implementation in Python tested on the Iris dataset.",
+    href: "https://medium.com/@wanigathungasasini/an-in-depth-exploration-of-na%C3%AFve-bayes-from-theory-to-implementation-in-python-c11622f88677",
+  },
+  {
+    date: "Aug 2023",
+    title: "“WEATHERWISE”: A Fascinating Journey into Weather Monitoring",
+    summary:
+      "A mini weather station built on the BMP280, HTU21D and LDR sensors, reporting to the Blynk IoT platform over WiFi. First solo university project.",
+    href: "https://medium.com/@wanigathungasasini/weatherwise-a-fascinating-journey-into-weather-monitoring-8f8326b2479e",
+  },
+] as const;
+
 export const aside = {
   sports: "Chess - FIDE Rating 1219",
   languages: "English (professional proficiency) · Sinhala (native proficiency)",
@@ -406,6 +434,7 @@ export const aside = {
  */
 export const topics: Topic[] = [
   { href: "/publications", label: "Publications", count: publications.length },
+  { href: "/blog", label: "Blog", count: posts.length },
   { href: "/experience", label: "Experience", count: experience.length },
   { href: "/projects", label: "Projects", count: projects.length },
   { href: "/awards", label: "Awards", count: awards.length },
