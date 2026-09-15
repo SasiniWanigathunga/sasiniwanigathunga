@@ -31,7 +31,7 @@
    * padding and the content offset all read this, so the layout stays in
    * step when it changes.
    */
-  --rail-w: 23.5rem;
+  --rail-w: 30rem;
 
   /* Segmentation-motif hues, tuned to sit quietly on paper. */
   --seg-1: #9a3b28;
