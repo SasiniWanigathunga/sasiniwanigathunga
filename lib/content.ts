@@ -2,8 +2,8 @@
  * Single source of truth for the site.
  *
  * Every string here comes from the CV (Sasini_Wanigathunga_2026), the arXiv
- * record for arXiv:2501.04696, the Google Scholar profile, or the GitHub
- * profile. Descriptions use the CV's own wording.
+ * record for arXiv:2501.04696, the Neural Networks article (Elsevier PII
+ * S0893608026011445), the Google Scholar profile, or the GitHub profile. Descriptions use the CV's own wording.
  *
  * Deliberately omitted for privacy: personal phone number, and the referees'
  * names, phone numbers and email addresses. Those remain in the PDF.
@@ -31,6 +31,8 @@ export const links = {
   github: "https://github.com/SasiniWanigathunga",
   scholar: "https://scholar.google.com/citations?user=_GKqZqwAAAAJ&hl=en",
   arxiv: "https://arxiv.org/abs/2501.04696",
+  /** Elsevier author share link for the Neural Networks article. */
+  neuralNetworks: "https://authors.elsevier.com/c/1nvvg3BBjKzNSr",
   cv: "/Sasini_Wanigathunga_CV.pdf",
   rad: "https://radsecurity.com/",
   uom: "https://uom.lk/",
@@ -53,14 +55,19 @@ export const about = [
     linkText: "University of Moratuwa",
   },
   {
-    text: "My undergraduate research on domain adaptive open vocabulary segmentation is available as {arxiv} and is under review at the Elsevier Journal of Neural Networks. Before joining Robotic Assistance Devices I was a machine learning engineer intern at FcodeLabs, where I worked on privacy-focused ML, and a visiting instructor at the University of Moratuwa.",
-    linkKey: "arxiv" as const,
-    linkText: "arXiv:2501.04696",
+    text: "My undergraduate research on domain adaptive open vocabulary segmentation is published in {neuralNetworks} (Elsevier, 2026). Before joining Robotic Assistance Devices I was a machine learning engineer intern at FcodeLabs, where I worked on privacy-focused ML, and a visiting instructor at the University of Moratuwa.",
+    linkKey: "neuralNetworks" as const,
+    linkText: "Neural Networks",
   },
 ] as const;
 
 /** Dated entries, newest first. Each one is a fact stated on the CV. */
 export const updates = [
+  {
+    date: "2026",
+    text: "Test-Time Optimization for Domain Adaptive Open Vocabulary Segmentation published in Neural Networks (Elsevier).",
+    href: links.neuralNetworks,
+  },
   {
     date: "Sep 2025",
     text: "Began as Engineer I - AI Research at Robotic Assistance Devices.",
@@ -96,7 +103,7 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
-    date: "Jan 2025",
+    date: "2026",
     title: "Test-Time Optimization for Domain Adaptive Open Vocabulary Segmentation",
     authors: [
       { name: "Ulindu De Silva", equalContribution: true },
@@ -107,10 +114,11 @@ export const publications: Publication[] = [
       { name: "Muzammal Naseer" },
       { name: "Ranga Rodrigo" },
     ],
-    venue: "arXiv:2501.04696 - under review, Elsevier Journal of Neural Networks",
+    venue: "Neural Networks (Elsevier), 2026 · arXiv:2501.04696",
     abstract:
       "We present Seg-TTO, a novel framework for zero-shot, open-vocabulary semantic segmentation (OVSS), designed to excel in specialized domain tasks. While current open-vocabulary approaches show impressive performance on standard segmentation benchmarks under zero-shot settings, they fall short of supervised counterparts on highly domain-specific datasets. We focus on segmentation-specific test-time optimization to address this gap. Segmentation requires an understanding of multiple concepts within a single image while retaining the locality and spatial structure of representations. We propose a novel self-supervised objective adhering to these requirements and use it to align the model parameters with input images at test time. In the textual modality, we learn multiple embeddings for each category to capture diverse concepts within an image, while in the visual modality, we calculate pixel-level losses followed by embedding aggregation operations specific to preserving spatial structure. Our resulting framework termed Seg-TTO is a plug-and-play module. We integrate Seg-TTO with three state-of-the-art OVSS approaches and evaluate across 22 challenging OVSS tasks covering a range of specialized domains. Our Seg-TTO demonstrates clear performance improvements (up to 27% mIoU increase on some datasets) establishing new state-of-the-art. Our code and models will be released publicly.",
     links: [
+      { label: "Neural Networks", href: links.neuralNetworks },
       { label: "arXiv", href: "https://arxiv.org/abs/2501.04696" },
       { label: "PDF", href: "https://arxiv.org/pdf/2501.04696" },
     ],

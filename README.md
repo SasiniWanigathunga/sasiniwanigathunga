@@ -11,9 +11,9 @@ B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, Univer
 
 ## Research
 
-**[Test-Time Optimization for Domain Adaptive Open Vocabulary Segmentation](https://arxiv.org/abs/2501.04696)**
+**[Test-Time Optimization for Domain Adaptive Open Vocabulary Segmentation](https://authors.elsevier.com/c/1nvvg3BBjKzNSr)**
 U. De Silva\*, D. Samaraweera\*, **S. Wanigathunga**\*, K. Kariyawasam\*, K. Ranasinghe, M. Naseer, R. Rodrigo
-arXiv:2501.04696 - under review, Elsevier Journal of Neural Networks · \*equal contribution
+Neural Networks (Elsevier), 2026 · [arXiv:2501.04696](https://arxiv.org/abs/2501.04696) · \*equal contribution
 
 ## Experience
 
