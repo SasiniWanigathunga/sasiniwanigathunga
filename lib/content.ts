@@ -320,9 +320,9 @@ export const leadership: LeadershipEntry[] = [
   {
     org: "IEEE Industrial Electronics Society Student Branch Chapter",
     place: "University of Moratuwa",
-    period: "Sep 2021 - Present",
+    period: "Sep 2021 - Jul 2025",
     roles: [
-      { title: "Secretary", period: "Mar - Jul 2025" },
+      { title: "Secretary", period: "Mar 2025 - Jul 2025" },
       { title: "Chief Editor", period: "Sep 2023 - Sep 2024" },
       { title: "Assistant Editor", period: "Sep 2022 - Sep 2023" },
       { title: "Member, Public Relations", period: "Sep 2021 - Sep 2022" },
@@ -337,22 +337,22 @@ export const leadership: LeadershipEntry[] = [
         title: "Editor",
         period: "Aug 2023 - Sep 2024",
         notes: [
-          "Student Editor-in-Chief, E-Carrier magazine - Apr 2024",
-          "Student Editor-in-Chief, E-Carrier magazine - Oct 2023",
-          "Chairperson, webinar on 'Path towards a successful publication' - Sep 2023",
-          "Chairperson, webinar on 'Visual SLAM' - Sep 2023",
+          "Student Editor-in-Chief of E-Carrier magazine - Apr 2024",
+          "Student Editor-in-Chief of E-Carrier magazine - Oct 2023",
+          "Chairperson of webinar on 'Path towards a successful publication' - Sep 2023",
+          "Chairperson of webinar on 'Visual SLAM' - Sep 2023",
         ],
       },
       {
         title: "Sub Editor",
         period: "May 2022 - Aug 2023",
-        notes: ["Student Editor-in-Chief, E-Carrier magazine - Oct 2022"],
+        notes: ["Student Editor-in-Chief of E-Carrier magazine - Oct 2022"],
       },
     ],
   },
   {
     org: "AIESEC in University of Moratuwa",
-    place: "AIESEC in Sri Lanka",
+    place: "University of Moratuwa",
     period: "Jan 2022 - Apr 2023",
     roles: [
       { title: "Content Specialist, Marketing & PR Team", period: "Aug 2022 - Apr 2023" },
@@ -362,8 +362,9 @@ export const leadership: LeadershipEntry[] = [
   {
     org: "IEEE Student Branch",
     place: "University of Moratuwa",
+    period: "August 2022 - October 2023",
     roles: [
-      { title: "Company Coordinator, Rise Up Mora", period: "2022, 2023" },
+      { title: "Company Coordinator, Rise Up Mora 2022 and 2023"},
       { title: "Group Coordinator & Editorial Committee Member, Gammeddata IEEE Api - Phase 3" },
     ],
   },
