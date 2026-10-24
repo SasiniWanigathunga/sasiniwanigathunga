@@ -27,8 +27,10 @@ Neural Networks (Elsevier), 2027 · [arXiv:2501.04696](https://arxiv.org/abs/250
 ## Skills
 
 **Programming Languages & Tools** - Python, MATLAB, C++, C#, Git, Playwright, Unity, FFmpeg
-**AI / ML** - PyTorch, TensorFlow, Hugging Face, NeMo, OpenCV, spaCy, NLTK, LangChain, LangGraph, vLLM
-**Deployment & Cloud** - ONNX Runtime, TensorRT, Docker, AWS (SageMaker, EC2, S3, CloudWatch)
+**AI / ML** - PyTorch, TensorFlow, Hugging Face, NVIDIA NeMo, scikit-learn, OpenCV, spaCy, NLTK, NumPy, Pandas
+**RAG & Agentic AI** - RAG, Qdrant, LangChain, LangGraph, VLM Harness, Voice AI Agents
+**Inference & Optimization** - vLLM, ONNX Runtime, TensorRT
+**Cloud Infrastructure & Deployment** - AWS (SageMaker, EC2, S3, CloudWatch), Docker, REST APIs
 
 ---
 

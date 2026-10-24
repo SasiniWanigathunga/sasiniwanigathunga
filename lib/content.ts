@@ -459,18 +459,26 @@ export const skills = [
       "PyTorch",
       "TensorFlow",
       "Hugging Face",
-      "NeMo",
+      "NVIDIA NeMo",
+      "scikit-learn",
       "OpenCV",
       "spaCy",
       "NLTK",
-      "LangChain",
-      "LangGraph",
-      "vLLM",
+      "NumPy",
+      "Pandas",
     ],
   },
   {
-    group: "Deployment & Cloud",
-    items: ["ONNX Runtime", "TensorRT", "Docker", "AWS SageMaker", "AWS EC2", "AWS S3", "AWS CloudWatch"],
+    group: "RAG & Agentic AI",
+    items: ["RAG", "Qdrant", "LangChain", "LangGraph", "VLM Harness", "Voice AI Agents"],
+  },
+  {
+    group: "Inference & Optimization",
+    items: ["vLLM", "ONNX Runtime", "TensorRT"],
+  },
+  {
+    group: "Cloud Infrastructure & Deployment",
+    items: ["AWS SageMaker", "AWS EC2", "AWS S3", "AWS CloudWatch", "Docker", "REST APIs"],
   },
 ] as const;
 

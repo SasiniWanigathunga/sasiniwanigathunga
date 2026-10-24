@@ -1,5 +1,6 @@
 import { aside, skills } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
+import { SkillIcon } from "@/components/ui/brandIcons";
 
 export function SkillList() {
   return (
@@ -12,8 +13,9 @@ export function SkillList() {
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded border border-hairline px-2 py-0.5 font-mono text-[0.68rem] text-ink-2 transition-colors hover:border-accent hover:text-accent"
+                  className="inline-flex items-center gap-1.5 rounded border border-hairline px-2 py-0.5 font-mono text-[0.68rem] text-ink-2 transition-colors hover:border-accent hover:text-accent"
                 >
+                  <SkillIcon skill={item} className="size-3 shrink-0" />
                   {item}
                 </span>
               ))}
