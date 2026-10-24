@@ -6,12 +6,12 @@ import { Reveal } from "@/components/ui/Reveal";
 export function PostList() {
   return (
     <>
-      <ol className="space-y-8">
+      <ol className="entry-list space-y-8">
         {posts.map((post, i) => (
           <Reveal as="li" key={post.href} delay={0.03 * i}>
             {/* Full width: the title leads, the date sits under it. */}
-            <article>
-              <h2 className="serif text-[1.25rem] leading-snug">
+            <article className="entry !block">
+              <h2 className="text-[1.25rem] leading-snug">
                 <a
                   href={post.href}
                   target="_blank"
@@ -38,7 +38,7 @@ export function PostList() {
           href={links.medium}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-10 inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-[0.8rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+          className="button-secondary group mt-10"
         >
           All posts on Medium
           <ArrowUpRight className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

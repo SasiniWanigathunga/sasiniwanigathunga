@@ -1,151 +1,60 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { links, navItems, profile } from "@/lib/content";
-import { asset, cx, samePath } from "@/lib/utils";
-import { Close, Download, Menu, Search } from "@/components/ui/icons";
+import { useEffect, useRef, useState } from "react";
+import { navItems, profile } from "@/lib/content";
+import { cx, samePath } from "@/lib/utils";
+import { ArrowUpRight, Close, Menu, Search } from "@/components/ui/icons";
 import { ThemeToggle } from "./ThemeToggle";
 import { useCommandPalette } from "./CommandPalette";
 
 export function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const { open: openPalette } = useCommandPalette();
-  const reduce = useReducedMotion();
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close the mobile menu whenever a navigation actually happens.
-  useEffect(() => setMenuOpen(false), [pathname]);
+  useEffect(() => { dialog.current?.close(); }, [pathname]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => { if (desktop.matches) dialog.current?.close(); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [menuOpen]);
 
   return (
     <>
-      {/* Content now starts immediately below the bar on every page, so the
-          bar is always opaque rather than fading in on scroll. */}
-      <header className="no-print fixed inset-x-0 top-0 z-50 border-b border-hairline bg-paper/85 backdrop-blur-xl">
-        <div className="shell-wide flex h-14 items-center gap-4 lg:pl-[var(--rail-w)]">
-          {/* Hidden on wide screens, where the left rail already shows the name. */}
-          <Link href="/" className="serif shrink-0 text-[0.95rem] lg:hidden">
-            {profile.name}
+      <header className="site-header no-print fixed inset-x-0 top-0 z-50 border-b border-hairline">
+        <div className="flex h-[4.5rem] items-center gap-5 px-5 sm:px-8">
+          <Link href="/" aria-label={`${profile.name} — Home`} className="group flex shrink-0 items-center gap-3">
+            <span className="grid size-8 place-items-center rounded border border-hairline-strong font-mono text-xs tracking-[-0.1em] text-accent group-hover:border-accent">sw.</span>
+            <span className="font-mono text-[0.7rem] tracking-tight text-ink-2">sasini<span className="hidden text-muted sm:inline"> / portfolio</span></span>
           </Link>
-
-          <nav className="ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Pages">
-            {navItems.map((topic) => {
-              const active = samePath(pathname, topic.href);
-              return (
-                <Link
-                  key={topic.href}
-                  href={topic.href}
-                  aria-current={active ? "page" : undefined}
-                  className={cx(
-                    "relative rounded-full px-2.5 py-1.5 text-[0.8rem] transition-colors",
-                    active ? "text-ink" : "text-muted hover:text-ink",
-                  )}
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-paper-2"
-                      transition={
-                        reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 38 }
-                      }
-                    />
-                  )}
-                  <span className="relative">{topic.label}</span>
-                </Link>
-              );
-            })}
+          <nav className="ml-auto hidden h-full items-center xl:flex" aria-label="Pages">
+            {navItems.map((topic) => <Link key={topic.href} href={topic.href} aria-current={samePath(pathname, topic.href) ? "page" : undefined} className="nav-link">{topic.label}</Link>)}
           </nav>
-
-          <div className="ml-auto flex items-center gap-1.5 lg:ml-2">
-            <button
-              type="button"
-              onClick={openPalette}
-              aria-label="Open command palette"
-              title="Search (⌘K)"
-              className="hidden size-9 place-items-center rounded-full border border-hairline text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:grid"
-            >
-              <Search className="size-[1rem]" />
-            </button>
-
+          <div className="ml-auto flex items-center gap-2 xl:ml-2">
+            <button type="button" onClick={openPalette} aria-label="Open command palette" title="Search (Ctrl/⌘ K)" className="icon-button"><Search className="size-4" /></button>
             <ThemeToggle />
-
-            <button
-              type="button"
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-              className="grid size-9 place-items-center rounded-full border border-hairline text-ink lg:hidden"
-            >
-              <Menu className="size-[1rem]" />
-            </button>
+            <button type="button" onClick={() => { dialog.current?.showModal(); setMenuOpen(true); }} aria-label="Open menu" aria-expanded={menuOpen} aria-controls="mobile-menu" className="icon-button xl:hidden"><Menu className="size-4" /></button>
           </div>
         </div>
       </header>
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="no-print fixed inset-0 z-[110] overflow-y-auto bg-paper lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reduce ? 0 : 0.25 }}
-          >
-            <div className="shell-wide flex h-14 items-center justify-between">
-              <span className="serif text-[0.95rem]">{profile.name}</span>
-              <button
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Close menu"
-                className="grid size-9 place-items-center rounded-full border border-hairline text-ink"
-              >
-                <Close className="size-[1rem]" />
-              </button>
-            </div>
-
-            <nav className="shell-wide mt-4 flex flex-col pb-10" aria-label="Pages">
-              {navItems.map((topic, i) => (
-                <motion.div
-                  key={topic.href}
-                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: reduce ? 0 : 0.35, delay: reduce ? 0 : 0.04 * i }}
-                >
-                  <Link
-                    href={topic.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={cx(
-                      "serif block border-b border-hairline py-3.5 text-2xl",
-                      samePath(pathname, topic.href) ? "text-accent" : "",
-                    )}
-                  >
-                    {topic.label}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <div className="mt-6 flex flex-wrap gap-2.5">
-                <a
-                  href={asset(links.cv)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper"
-                >
-                  <Download className="size-4" />
-                  CV
-                </a>
-                <a
-                  href={links.email}
-                  className="flex items-center gap-2 rounded-full border border-hairline-strong px-5 py-2.5 text-sm"
-                >
-                  Email
-                </a>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <dialog ref={dialog} id="mobile-menu" aria-label="Navigation" onClose={() => setMenuOpen(false)} className="no-print fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto border-0 bg-paper p-0 text-ink backdrop:bg-paper">
+        <div className="flex h-[4.5rem] items-center justify-between border-b border-hairline px-6"><span className="label">Navigation</span><button type="button" onClick={() => dialog.current?.close()} aria-label="Close menu" className="icon-button"><Close className="size-4" /></button></div>
+        <nav className="mx-auto max-w-2xl px-6 py-6" aria-label="Mobile pages">
+          {navItems.map((topic, i) => <Link key={topic.href} href={topic.href} onClick={() => dialog.current?.close()} aria-current={samePath(pathname, topic.href) ? "page" : undefined} className={cx("flex items-center gap-5 border-b border-hairline py-4 text-xl tracking-tight", samePath(pathname, topic.href) && "text-accent")}><span className="font-mono text-[0.65rem] text-muted">{String(i).padStart(2, "0")}</span>{topic.label}<ArrowUpRight className="ml-auto size-4 text-muted" /></Link>)}
+        </nav>
+      </dialog>
     </>
   );
 }

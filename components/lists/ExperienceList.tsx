@@ -4,17 +4,17 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function ExperienceList() {
   return (
-    <ol className="space-y-9">
+    <ol className="entry-list space-y-8">
       {experience.map((role, i) => (
         <Reveal as="li" key={role.org} delay={0.04 * i}>
-          <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
+          <article className="entry">
             <span className="label !text-[0.625rem] sm:pt-1.5">
               {role.positions[role.positions.length - 1].period.split(" - ")[0]} -{" "}
               {role.positions[0].period.split(" - ")[1]}
             </span>
 
             <div>
-              <h2 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem]">
+              <h2 className="flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem]">
                 {role.url ? (
                   <a
                     href={role.url}

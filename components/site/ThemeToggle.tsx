@@ -36,7 +36,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
       title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-      className={`grid size-9 place-items-center rounded-full border border-hairline text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink ${className}`}
+      className={`icon-button ${className}`}
     >
       {/* Render nothing until mounted so the icon never contradicts the page. */}
       <span className={mounted ? "" : "opacity-0"}>

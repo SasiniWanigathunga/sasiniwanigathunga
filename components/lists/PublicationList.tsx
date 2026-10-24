@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function PublicationList() {
   return (
-    <ol className="space-y-9">
+    <ol className="entry-list space-y-8">
       {publications.map((pub) => (
         <Reveal as="li" key={pub.title}>
           <Entry pub={pub} />
@@ -23,11 +23,11 @@ function Entry({ pub }: { pub: (typeof publications)[number] }) {
   const reduce = useReducedMotion();
 
   return (
-    <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
+    <article className="entry">
       <span className="label !text-[0.625rem] sm:pt-1.5">{pub.date}</span>
 
       <div>
-        <h2 className="serif text-[1.15rem] leading-snug">
+        <h2 className="text-[1.15rem] leading-snug">
           <a
             href={pub.links[0].href}
             target="_blank"
@@ -57,7 +57,7 @@ function Entry({ pub }: { pub: (typeof publications)[number] }) {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/link inline-flex items-center gap-1 rounded border border-hairline px-2 py-0.5 font-mono text-[0.65rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+              className="group/link inline-flex items-center gap-1 rounded border border-hairline bg-surface px-3 py-1.5 font-mono text-[0.65rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
             >
               {link.label}
               <ArrowUpRight className="size-2.5 transition-transform group-hover/link:translate-x-px group-hover/link:-translate-y-px" />
@@ -67,7 +67,7 @@ function Entry({ pub }: { pub: (typeof publications)[number] }) {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="rounded border border-hairline px-2 py-0.5 font-mono text-[0.65rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+            className="rounded border border-hairline bg-surface px-3 py-1.5 font-mono text-[0.65rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
           >
             Abstract {open ? "−" : "+"}
           </button>

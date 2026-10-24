@@ -1,87 +1,49 @@
 import Link from "next/link";
 import { links, profile } from "@/lib/content";
 import { asset } from "@/lib/utils";
-import { Download, Github, Linkedin, Mail, Scholar } from "@/components/ui/icons";
-import { PatchGrid } from "@/components/ui/PatchGrid";
+import { ArrowUpRight, Download, Github, Linkedin, Mail, Scholar } from "@/components/ui/icons";
 
-/**
- * The CV sits in this list rather than in a button of its own, so every way off
- * the panel reads as one column of links. `asset` is build-time constant, so
- * calling it here costs nothing.
- */
 const externalLinks = [
-  { label: "Email", value: profile.email, href: links.email, Icon: Mail },
-  { label: "LinkedIn", value: "in/sasiniwanigathunga", href: links.linkedin, Icon: Linkedin },
-  { label: "GitHub", value: "@SasiniWanigathunga", href: links.github, Icon: Github },
-  { label: "Google Scholar", value: "Publications", href: links.scholar, Icon: Scholar },
-  { label: "Curriculum vitae", value: "PDF", href: asset(links.cv), Icon: Download },
+  { label: "Email", href: links.email, Icon: Mail },
+  { label: "LinkedIn", href: links.linkedin, Icon: Linkedin },
+  { label: "GitHub", href: links.github, Icon: Github },
+  { label: "Google Scholar", href: links.scholar, Icon: Scholar },
 ];
 
-/**
- * The identity block: photo, name and every external link. Fixed to the left
- * on wide screens so it stays put across page navigations; stacked above the
- * content on narrow ones, where a fixed rail has nowhere to live.
- *
- * Rendered once in the root layout, so it survives client-side navigation
- * rather than remounting per page.
- */
 export function ProfilePanelRail() {
   return (
-    <aside
-      aria-label="Profile and links"
-      className="no-print fixed inset-y-0 left-0 top-14 z-40 hidden w-[var(--rail-w)] overflow-y-auto border-r border-hairline bg-paper px-8 py-10 lg:block"
-    >
+    <aside aria-label="Profile and links" className="profile-rail no-print fixed inset-y-0 left-0 top-[4.5rem] z-40 hidden w-[var(--rail-w)] overflow-y-auto border-r border-hairline px-8 py-10 lg:block">
       <PanelBody />
     </aside>
   );
 }
 
-/** The same block, in the page flow, for screens below the rail breakpoint. */
 export function ProfilePanelInline() {
-  return (
-    <div className="shell border-b border-hairline pb-9 lg:hidden">
-      <PanelBody />
-    </div>
-  );
+  return <div className="profile-inline shell mb-8 border-b border-hairline pb-7 lg:hidden"><PanelBody /></div>;
 }
 
 function PanelBody() {
   return (
-    <div className="flex flex-col items-center text-center">
-      <Link href="/" className="group relative grid size-44 place-items-center" aria-label="Home">
-        <PatchGrid className="absolute inset-0 -z-10 opacity-70" />
-        <img
-          src={asset(profile.photo)}
-          alt={profile.name}
-          width={460}
-          height={460}
-          className="size-24 rounded-full border border-hairline object-cover shadow-sm transition-transform duration-500 group-hover:scale-105"
-        />
+    <div className="profile-body">
+      <Link href="/" className="profile-portrait block" aria-label="Home">
+        <img src={asset(profile.photo)} alt={profile.name} width={460} height={460} fetchPriority="high" />
       </Link>
-
-      <Link href="/" className="serif mt-5 text-[1.5rem] leading-tight transition-colors hover:text-accent">
-        {profile.name}
-      </Link>
-
-      <p className="mt-2 text-[0.85rem] leading-relaxed text-ink-2">{profile.subtitle}</p>
-      <p className="label mt-2 !text-[0.6rem]">{profile.location}</p>
-
-      <ul className="mt-6 w-full space-y-0.5 border-t border-hairline pt-5">
-        {externalLinks.map(({ label, value, href, Icon }) => (
+      <div className="profile-identity mt-7">
+        <Link href="/" className="profile-name block text-[1.55rem] font-medium leading-[1.3] tracking-[-0.045em] transition-colors hover:text-accent">{profile.firstName}<br className="hidden lg:block" /><span className="lg:hidden"> </span>{profile.lastName}</Link>
+        <p className="profile-subtitle mt-3 text-[0.8rem] leading-[1.8] text-ink-2">{profile.subtitle}</p>
+        <p className="profile-location label mt-4 flex items-center gap-2 !text-[0.6rem]"><span aria-hidden className="size-1.5 rounded-full bg-accent" />Based in {profile.location}</p>
+      </div>
+      <ul className="profile-links mt-6 border-t border-hairline pt-3">
+        {externalLinks.map(({ label, href, Icon }) => (
           <li key={label}>
-            <a
-              href={href}
-              target={href.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              title={value}
-              className="group flex items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-[0.875rem] text-ink-2 transition-colors hover:bg-paper-2 hover:text-ink"
-            >
-              <Icon className="size-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
-              <span className="truncate">{label}</span>
+            <a href={href} target={href.startsWith("mailto:") ? undefined : "_blank"} rel="noopener noreferrer" className="profile-link group">
+              <Icon className="size-4 shrink-0 text-muted group-hover:text-accent" />
+              <span>{label}</span><ArrowUpRight className="external-arrow ml-auto size-3 text-muted" />
             </a>
           </li>
         ))}
       </ul>
+      <a href={asset(links.cv)} target="_blank" rel="noopener noreferrer" className="profile-cv button-secondary mt-5 w-full"><Download className="size-3.5" />Curriculum vitae<span className="ml-auto font-mono text-[0.6rem] text-muted">PDF</span></a>
     </div>
   );
 }

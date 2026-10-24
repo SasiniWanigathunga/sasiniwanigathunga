@@ -4,14 +4,14 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function EducationList() {
   return (
-    <ol className="space-y-9">
+    <ol className="entry-list space-y-8">
       {education.map((entry, i) => (
         <Reveal as="li" key={entry.school} delay={0.04 * i}>
-          <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
+          <article className="entry">
             <span className="label !text-[0.625rem] sm:pt-1.5">{entry.period}</span>
 
             <div>
-              <h2 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem]">
+              <h2 className="flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem]">
                 {"url" in entry && entry.url ? (
                   <a
                     href={entry.url}
@@ -49,7 +49,7 @@ export function EducationList() {
                     {entry.coursework.map((course) => (
                       <li
                         key={course}
-                        className="rounded border border-hairline px-1.5 py-0.5 font-mono text-[0.6rem] text-muted"
+                        className="rounded border border-hairline bg-paper-2 px-2 py-1 font-mono text-[0.65rem] text-ink-2"
                       >
                         {course}
                       </li>

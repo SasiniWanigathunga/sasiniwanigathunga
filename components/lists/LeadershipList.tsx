@@ -3,14 +3,14 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function LeadershipList() {
   return (
-    <ol className="space-y-9">
+    <ol className="entry-list space-y-8">
       {leadership.map((entry, i) => (
         <Reveal as="li" key={entry.org} delay={0.03 * i}>
-          <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
+          <article className="entry">
             <span className="label !text-[0.625rem] sm:pt-1.5">{entry.period}</span>
 
             <div>
-              <h2 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.05rem] leading-snug">
+              <h2 className="flex flex-wrap items-baseline gap-x-2.5 text-[1.05rem] leading-snug">
                 {entry.org}
                 <span className="label !text-[0.6rem]">{entry.place}</span>
               </h2>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import { profile, links } from "@/lib/content";
 import { CommandPaletteProvider } from "@/components/site/CommandPalette";
 import { Footer } from "@/components/site/Footer";
@@ -8,21 +8,25 @@ import { ProfilePanelInline, ProfilePanelRail } from "@/components/site/ProfileP
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
+const newsreader = localFont({
+  src: [
+    { path: "./fonts/newsreader-latin.woff2", weight: "200 800", style: "normal" },
+    { path: "./fonts/newsreader-italic-latin.woff2", weight: "200 800", style: "italic" },
+  ],
   display: "swap",
   variable: "--font-newsreader",
-  style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./fonts/inter-latin.woff2",
+  weight: "100 900",
   display: "swap",
   variable: "--font-inter",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: "./fonts/jetbrains-mono-latin.woff2",
+  weight: "100 800",
   display: "swap",
   variable: "--font-mono-jb",
 });
@@ -69,8 +73,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfaf7" },
-    { media: "(prefers-color-scheme: dark)", color: "#121c33" },
+    { media: "(prefers-color-scheme: light)", color: "#f8faf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#10191c" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -111,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="grain flex min-h-screen flex-col antialiased">
+      <body id="top" className="flex min-h-screen flex-col antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-paper"
@@ -126,11 +130,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ProfilePanelRail />
           {/* The left offset matches the rail's width; the top padding clears
               the fixed nav on every page. */}
-          <main id="main" className="flex-1 pt-20 lg:pl-[var(--rail-w)] lg:pt-24">
+          <main id="main" className="min-w-0 flex-1 pt-28 lg:pl-[var(--rail-w)] lg:pt-32">
             <ProfilePanelInline />
             {children}
           </main>
-          <div className="lg:pl-[var(--rail-w)]">
+          <div className="footer-wrap lg:pl-[var(--rail-w)]">
             <Footer />
           </div>
         </CommandPaletteProvider>

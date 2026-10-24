@@ -6,14 +6,14 @@ import { asset } from "@/lib/utils";
 export function ProjectList() {
   return (
     <>
-      <ol className="space-y-9">
+      <ol className="space-y-5">
         {projects.map((project, i) => (
           <Reveal as="li" key={project.title} delay={0.03 * i}>
-            <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
+            <article className="project-card entry">
               <span className="label !text-[0.625rem] sm:pt-1.5">{project.period}</span>
 
               <div>
-                <h2 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem] leading-snug">
+                <h2 className="flex flex-wrap items-baseline gap-x-2.5 text-[1.15rem] leading-snug">
                   {project.href ? (
                     <a
                       href={project.href}
@@ -43,7 +43,7 @@ export function ProjectList() {
                     href={asset(project.image.src)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 block overflow-hidden rounded border border-hairline bg-surface transition-colors hover:border-hairline-strong"
+                    className="mt-5 block overflow-hidden rounded-md border border-hairline bg-paper-2 p-3 transition-colors hover:border-hairline-strong"
                   >
                     <img
                       src={asset(project.image.src)}
@@ -59,7 +59,7 @@ export function ProjectList() {
                   {project.stack.map((tech) => (
                     <li
                       key={tech}
-                      className="rounded border border-hairline px-1.5 py-0.5 font-mono text-[0.6rem] text-muted"
+                      className="rounded border border-hairline bg-paper-2 px-2 py-1 font-mono text-[0.65rem] text-ink-2"
                     >
                       {tech}
                     </li>
@@ -76,7 +76,7 @@ export function ProjectList() {
           href={links.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-10 inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-[0.8rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+          className="button-secondary group mt-10"
         >
           <Github className="size-3.5" />
           All repositories

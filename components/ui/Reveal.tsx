@@ -14,21 +14,21 @@ type RevealProps = {
 };
 
 /**
- * Scroll-triggered entrance. Fires once, and collapses to a plain fade -
- * effectively nothing - when the visitor has asked for reduced motion.
+ * A subtle entrance that never hides the server-rendered content.
+ * Reduced-motion visitors see everything immediately, without movement.
  */
-export function Reveal({ children, delay = 0, y = 24, className, as = "div" }: RevealProps) {
+export function Reveal({ children, delay = 0, y = 12, className, as = "div" }: RevealProps) {
   const reduce = useReducedMotion();
   const Component = motion[as];
 
   return (
     <Component
       className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
-      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      initial={reduce ? false : { y }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}
       transition={{
-        duration: reduce ? 0.2 : 0.7,
+        duration: reduce ? 0 : 0.6,
         delay: reduce ? 0 : delay,
         ease: [0.16, 1, 0.3, 1],
       }}
