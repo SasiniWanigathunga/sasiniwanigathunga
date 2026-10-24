@@ -1,6 +1,7 @@
 import { links, projects } from "@/lib/content";
 import { ArrowUpRight, Github } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/Reveal";
+import { asset } from "@/lib/utils";
 
 export function ProjectList() {
   return (
@@ -36,6 +37,23 @@ export function ProjectList() {
                 <p className="mt-2 text-[0.925rem] leading-relaxed text-ink-2 pretty">
                   {project.description}
                 </p>
+
+                {project.image && (
+                  <a
+                    href={asset(project.image.src)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 block overflow-hidden rounded border border-hairline bg-surface transition-colors hover:border-hairline-strong"
+                  >
+                    <img
+                      src={asset(project.image.src)}
+                      alt={project.image.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="mx-auto max-h-80 w-auto max-w-full object-contain"
+                    />
+                  </a>
+                )}
 
                 <ul className="mt-3 flex flex-wrap gap-1.5">
                   {project.stack.map((tech) => (

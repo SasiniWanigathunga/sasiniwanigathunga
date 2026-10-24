@@ -178,6 +178,8 @@ export type Project = {
   description: string;
   stack: string[];
   href?: string;
+  /** Path under `public/`, routed through `asset()` when rendered. */
+  image?: { src: string; alt: string };
 };
 
 export const projects: Project[] = [
@@ -189,6 +191,10 @@ export const projects: Project[] = [
       "Developed a novel test-time optimization framework. Evaluated across 22 challenging domain specific datasets and obtained overall +2.03 mIoU improvement over the state-of-the-art.",
     stack: ["Computer Vision", "VLMs", "Prompt Learning"],
     href: "https://arxiv.org/abs/2501.04696",
+    image: {
+      src: "/projects/seg-tto.jpg",
+      alt: "Seg-TTO architecture: augmented image and text prompts pass through image and text encoders, a selector module keeps low-entropy views, and a self-supervised loss updates the model at test time before the segmentation decoder.",
+    },
   },
   {
     title: "Spoken Named Entity Localization",
@@ -204,6 +210,10 @@ export const projects: Project[] = [
       "Developed a LLM-powered application for project managers using Retrieval-Augmented Generation (RAG) to integrate project documents, company resources, web links, and Jira issue tracking.",
     stack: ["LLMs", "Groq", "RAG", "Next.js", "Jira API", "AstraDB"],
     href: "https://github.com/SasiniWanigathunga/ProjectPulseAI",
+    image: {
+      src: "/projects/projectpulseai.jpg",
+      alt: "ProjectPulseAI chat interface answering a question about Jira issues for a project, with the model's reasoning shown above the answer.",
+    },
   },
   {
     title: "Ophthalmic Biomarker Detection",
@@ -220,6 +230,10 @@ export const projects: Project[] = [
       "Designed a game using Unity with WebGL including API authentication, player profile, a questionnaire that can be opened using a web browser, dynamic and interactive game environment and a leaderboard.",
     stack: ["Unity", "C#"],
     href: "https://github.com/SasiniWanigathunga/SDC_Tesseract",
+    image: {
+      src: "/projects/software-design-competition.jpg",
+      alt: "Collage of game screens: main menu, player profile, leaderboard, authentication and the game environment.",
+    },
   },
   {
     title: "Non-pipelined Single Stage (Cycle) RISC-V Processor Design",
@@ -236,6 +250,10 @@ export const projects: Project[] = [
       "Developed a user-friendly mini weather station with remote monitoring via web dashboard and mobile app.",
     stack: ["Altium", "SolidWorks", "C++"],
     href: "https://github.com/SasiniWanigathunga/Mini-Weather-Station",
+    image: {
+      src: "/projects/mini-weather-station.jpg",
+      alt: "SolidWorks render of the weather station enclosure with a display, two switches, a push button and sensor vents.",
+    },
   },
   {
     title: "Robot Design and Competition",
@@ -244,6 +262,10 @@ export const projects: Project[] = [
       "Designed a simulation of a robot capable of identifying chess piece positions and performing checkmate.",
     stack: ["Arduino", "Webots", "C++"],
     href: "https://github.com/SasiniWanigathunga/EN2533-RobotDesignandCompetition",
+    image: {
+      src: "/projects/robot-design-and-competition.jpg",
+      alt: "Webots simulation arena: a line-following path leading to a chessboard with pieces, beside a curved row of dominoes.",
+    },
   },
 ];
 
