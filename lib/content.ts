@@ -262,13 +262,13 @@ export const awards = [
   {
     period: "Sep 2026",
     title: "Prof. C. Patuwathavithane Memorial Award",
-    /* rank: "University of Moratuwa", */
+    rank: "",
     detail: "Awarded for achieving the highest GPA in Semesters 7 and 8 in Faculty of Engineering at University of Moratuwa.",
   },
   {
     period: "Sep 2026",
     title: "Prof. K.K.Y.W. Perera Award",
-    /* rank: "University of Moratuwa", */
+    rank: "",
     detail:
       "Awarded for achieving the highest GPA in Semesters 7 and 8 in Electronic and Telecommunication Engineering at University of Moratuwa.",
   },
