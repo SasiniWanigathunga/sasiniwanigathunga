@@ -3,7 +3,8 @@
  *
  * Every string here comes from the CV (Sasini_Wanigathunga_2026), the arXiv
  * record for arXiv:2501.04696, the Neural Networks article (Elsevier PII
- * S0893608026011445), the Google Scholar profile, or the GitHub profile. Descriptions use the CV's own wording.
+ * S0893608026011445), the Google Scholar profile, the LinkedIn profile, or the
+ * GitHub profile. Descriptions use the CV's own wording.
  *
  * Deliberately omitted for privacy: personal phone number, and the referees'
  * names, phone numbers and email addresses. Those remain in the PDF.
@@ -297,31 +298,82 @@ export const awards = [
   },
 ] as const;
 
-export const leadership = [
+export type LeadershipRole = {
+  title: string;
+  period?: string;
+  /** Sub-items listed under the role on LinkedIn. */
+  notes?: string[];
+};
+
+export type LeadershipEntry = {
+  org: string;
+  place: string;
+  period?: string;
+  roles: LeadershipRole[];
+};
+
+/**
+ * Organisations, titles and dates as listed under Volunteering on the
+ * LinkedIn profile, newest first within each organisation.
+ */
+export const leadership: LeadershipEntry[] = [
   {
     org: "IEEE Industrial Electronics Society Student Branch Chapter",
     place: "University of Moratuwa",
-    roles: ["Secretary", "Chief Editor", "Assistant Editor", "Member of Public Relations Team"],
+    period: "Sep 2021 - Present",
+    roles: [
+      { title: "Secretary", period: "Mar - Jul 2025" },
+      { title: "Chief Editor", period: "Sep 2023 - Sep 2024" },
+      { title: "Assistant Editor", period: "Sep 2022 - Sep 2023" },
+      { title: "Member, Public Relations", period: "Sep 2021 - Sep 2022" },
+    ],
   },
   {
     org: "Electronic Club",
     place: "University of Moratuwa",
+    period: "May 2022 - Sep 2024",
     roles: [
-      "Chairperson for two webinars",
-      "Student Editor-in-Chief for the E-Carrier magazine",
-      "Editor",
-      "Sub Editor",
+      {
+        title: "Editor",
+        period: "Aug 2023 - Sep 2024",
+        notes: [
+          "Student Editor-in-Chief, E-Carrier magazine - Apr 2024",
+          "Student Editor-in-Chief, E-Carrier magazine - Oct 2023",
+          "Chairperson, webinar on 'Path towards a successful publication' - Sep 2023",
+          "Chairperson, webinar on 'Visual SLAM' - Sep 2023",
+        ],
+      },
+      {
+        title: "Sub Editor",
+        period: "May 2022 - Aug 2023",
+        notes: ["Student Editor-in-Chief, E-Carrier magazine - Oct 2022"],
+      },
     ],
   },
   {
-    org: "AIESEC in Colombo South",
-    place: "Sri Lanka",
+    org: "AIESEC in University of Moratuwa",
+    place: "AIESEC in Sri Lanka",
+    period: "Jan 2022 - Apr 2023",
     roles: [
-      "Content Specialist in Public Relations and Marketing Team",
-      "iGT International Relations and Matching Team",
+      { title: "Content Specialist, Marketing & PR Team", period: "Aug 2022 - Apr 2023" },
+      { title: "International Relations and Matching Team Member", period: "Jan - Aug 2022" },
     ],
   },
-] as const;
+  {
+    org: "IEEE Student Branch",
+    place: "University of Moratuwa",
+    roles: [
+      { title: "Company Coordinator, Rise Up Mora", period: "2022, 2023" },
+      { title: "Group Coordinator & Editorial Committee Member, Gammeddata IEEE Api - Phase 3" },
+    ],
+  },
+  {
+    org: "IEEE Industry Applications Society Student Branch Chapter",
+    place: "University of Moratuwa",
+    period: "Sep 2021 - Aug 2022",
+    roles: [{ title: "Executive Committee Member, Editorial Team", period: "Sep 2021 - Aug 2022" }],
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /* Education                                                           */

@@ -3,27 +3,43 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function LeadershipList() {
   return (
-    <ul className="space-y-6">
+    <ol className="space-y-9">
       {leadership.map((entry, i) => (
         <Reveal as="li" key={entry.org} delay={0.03 * i}>
-          <div className="grid gap-x-4 gap-y-1 sm:grid-cols-[6.5rem_1fr]">
-            <span className="label !text-[0.625rem] sm:pt-1.5">{entry.place}</span>
+          <article className="grid gap-x-4 gap-y-2 sm:grid-cols-[6.5rem_1fr]">
+            <span className="label !text-[0.625rem] sm:pt-1.5">{entry.period}</span>
+
             <div>
-              <h2 className="serif text-[1.05rem] leading-snug">{entry.org}</h2>
-              <ul className="mt-2 flex flex-wrap gap-1.5">
+              <h2 className="serif flex flex-wrap items-baseline gap-x-2.5 text-[1.05rem] leading-snug">
+                {entry.org}
+                <span className="label !text-[0.6rem]">{entry.place}</span>
+              </h2>
+
+              <ul className="mt-2 space-y-1.5">
                 {entry.roles.map((role) => (
-                  <li
-                    key={role}
-                    className="rounded border border-hairline px-1.5 py-0.5 font-mono text-[0.6rem] text-muted"
-                  >
-                    {role}
+                  <li key={role.title} className="text-[0.9rem]">
+                    <div className="flex flex-wrap items-baseline gap-x-2.5">
+                      <span className="text-ink">{role.title}</span>
+                      {role.period && (
+                        <span className="font-mono text-[0.68rem] text-muted">{role.period}</span>
+                      )}
+                    </div>
+                    {role.notes && (
+                      <ul className="mt-1 space-y-0.5 border-l border-hairline pl-3">
+                        {role.notes.map((note) => (
+                          <li key={note} className="text-[0.825rem] leading-relaxed text-ink-2">
+                            {note}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
+          </article>
         </Reveal>
       ))}
-    </ul>
+    </ol>
   );
 }
