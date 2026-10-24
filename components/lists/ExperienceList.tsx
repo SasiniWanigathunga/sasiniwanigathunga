@@ -49,9 +49,19 @@ export function ExperienceList() {
                 ))}
               </ul>
 
-              <p className="mt-3 text-[0.925rem] leading-relaxed text-ink-2 pretty">
-                {role.description}
-              </p>
+              {role.description.length === 1 ? (
+                <p className="mt-3 text-[0.925rem] leading-relaxed text-ink-2 pretty">
+                  {role.description[0]}
+                </p>
+              ) : (
+                <ul className="mt-3 list-disc space-y-1.5 pl-4 text-[0.925rem] leading-relaxed text-ink-2 marker:text-muted">
+                  {role.description.map((point) => (
+                    <li key={point} className="pretty">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </article>
         </Reveal>

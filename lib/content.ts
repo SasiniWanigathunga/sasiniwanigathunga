@@ -34,7 +34,7 @@ export const links = {
   arxiv: "https://arxiv.org/abs/2501.04696",
   /** Elsevier author share link for the Neural Networks article. */
   neuralNetworks: "https://authors.elsevier.com/c/1nvvg3BBjKzNSr",
-  cv: "/Sasini_Wanigathunga_CV.pdf",
+  cv: "/Sasini_Wanigathunga_2026.pdf",
   rad: "https://radsecurity.com/",
   uom: "https://uom.lk/",
   medium: "https://medium.com/@wanigathungasasini",
@@ -56,7 +56,7 @@ export const about = [
     linkText: "University of Moratuwa",
   },
   {
-    text: "My undergraduate research on domain adaptive open vocabulary segmentation is published in {neuralNetworks} (Elsevier, 2026). Before joining Robotic Assistance Devices I was a machine learning engineer intern at FcodeLabs, where I worked on privacy-focused ML, and a visiting instructor at the University of Moratuwa.",
+    text: "My undergraduate research on domain adaptive open vocabulary segmentation is published in {neuralNetworks} (Elsevier, 2027). Before joining Robotic Assistance Devices I was a machine learning engineer intern at FcodeLabs, where I worked on privacy-focused ML, and a visiting instructor at the University of Moratuwa.",
     linkKey: "neuralNetworks" as const,
     linkText: "Neural Networks",
   },
@@ -115,7 +115,7 @@ export const publications: Publication[] = [
       { name: "Muzammal Naseer" },
       { name: "Ranga Rodrigo" },
     ],
-    venue: "Neural Networks (Elsevier), 2026 · arXiv:2501.04696",
+    venue: "Neural Networks (Elsevier), 2027 · arXiv:2501.04696",
     abstract:
       "We present Seg-TTO, a novel framework for zero-shot, open-vocabulary semantic segmentation (OVSS), designed to excel in specialized domain tasks. While current open-vocabulary approaches show impressive performance on standard segmentation benchmarks under zero-shot settings, they fall short of supervised counterparts on highly domain-specific datasets. We focus on segmentation-specific test-time optimization to address this gap. Segmentation requires an understanding of multiple concepts within a single image while retaining the locality and spatial structure of representations. We propose a novel self-supervised objective adhering to these requirements and use it to align the model parameters with input images at test time. In the textual modality, we learn multiple embeddings for each category to capture diverse concepts within an image, while in the visual modality, we calculate pixel-level losses followed by embedding aggregation operations specific to preserving spatial structure. Our resulting framework termed Seg-TTO is a plug-and-play module. We integrate Seg-TTO with three state-of-the-art OVSS approaches and evaluate across 22 challenging OVSS tasks covering a range of specialized domains. Our Seg-TTO demonstrates clear performance improvements (up to 27% mIoU increase on some datasets) establishing new state-of-the-art. Our code and models will be released publicly.",
     links: [
@@ -135,8 +135,8 @@ export type Role = {
   orgNote?: string;
   url?: string;
   positions: { title: string; period: string; current?: boolean }[];
-  /** CV wording, verbatim. */
-  description: string;
+  /** CV bullet points, verbatim. */
+  description: string[];
 };
 
 export const experience: Role[] = [
@@ -148,22 +148,29 @@ export const experience: Role[] = [
       { title: "Engineer I - AI Research", period: "Sep 2025 - Present", current: true },
       { title: "AI Research Engineer", period: "Mar 2025 - Sep 2025" },
     ],
-    description:
-      "Contributing to the design and development of agentic AI, AI automation, and video analytics solutions for surveillance applications, with a focus on deep learning research.",
+    description: [
+      "Developed browser-based automation for security operations, including dashboard navigation and interaction workflows.",
+      "Developed automated camera-health monitoring and focus correction using image blur scores.",
+      "Developed agentic workflows for a voice assistant and a multi-agent vision-language model (VLM) harness.",
+      "Deployed and evaluated machine learning models on AWS using SageMaker, EC2, and S3, assessing inference performance and scalability.",
+      "Developed a retrieval-augmented generation (RAG) system for operational log analysis and natural-language security incident investigation.",
+      "Conducted research and development on video-based fall detection and keyframe extraction.",
+    ],
   },
   {
     org: "FcodeLabs",
     orgNote: "Sri Lanka",
     positions: [{ title: "Machine Learning Engineer - Intern", period: "Nov 2023 - May 2024" }],
-    description:
+    description: [
       "Worked on privacy-focused ML solutions, including developing a novel method for removing PII from speech data and building production-ready NLP modules for privacy data masking and LLM-based activity suggestion features.",
+    ],
   },
   {
     org: "University of Moratuwa",
     orgNote: "Sri Lanka",
     url: links.uom,
     positions: [{ title: "Visiting Instructor", period: "Feb 2024 - Apr 2024" }],
-    description: "Worked as a visiting instructor for EN1094: Laboratory Practice.",
+    description: ["Worked as a visiting instructor for EN1094: Laboratory Practice."],
   },
 ];
 
@@ -275,22 +282,20 @@ export const projects: Project[] = [
 
 export const awards = [
   /*
-   * Both conferred at the University of Moratuwa Awards Ceremony 2026. Titles
-   * and dates are as listed under Honours on the LinkedIn profile. The Perera
-   * award's criterion is the Department of Electronic and Telecommunication
-   * Engineering's own wording; no public source states the criterion for the
-   * Patuwathavithane award, so it carries no description.
+   * Both conferred at the University of Moratuwa Awards Ceremony 2026 for the
+   * 2023/2024 academic year. Titles and dates are as listed under Honours on
+   * the LinkedIn profile; the academic year is the CV's.
    */
   {
     period: "Sep 2026",
     title: "Prof. C. Patuwathavithane Memorial Award",
-    rank: "",
+    rank: "Academic Year 2023/2024",
     detail: "Awarded for achieving the highest GPA in Semesters 7 and 8 in Faculty of Engineering at University of Moratuwa.",
   },
   {
     period: "Sep 2026",
     title: "Prof. K.K.Y.W. Perera Award",
-    rank: "",
+    rank: "Academic Year 2023/2024",
     detail:
       "Awarded for achieving the highest GPA in Semesters 7 and 8 in Electronic and Telecommunication Engineering at University of Moratuwa.",
   },
@@ -431,8 +436,9 @@ export const education = [
     period: "2011 - 2019",
     result: "Z-score 2.6629",
     notes: [
+      "District Rank 7",
       "Island Rank 97",
-      "4 A passes: Combined Mathematics, Physics, Chemistry, General English",
+      "3 A passes: Combined Mathematics, Physics, Chemistry",
     ],
     coursework: [],
   },
@@ -443,36 +449,41 @@ export const education = [
 /* ------------------------------------------------------------------ */
 
 export const skills = [
-  { group: "Programming Languages", items: ["Python", "C++", "C#"] },
   {
-    group: "Frameworks",
-    items: ["PyTorch", "TensorFlow", "spaCy", "NLTK", "NeMo", "OpenCV", "LangChain", "LangGraph"],
+    group: "Programming Languages & Tools",
+    items: ["Python", "MATLAB", "C++", "C#", "Git", "Playwright", "Unity", "FFmpeg"],
   },
   {
-    group: "Software & Tools",
+    group: "AI / ML",
     items: [
-      "VS Code",
-      "Git / GitHub",
+      "PyTorch",
+      "TensorFlow",
       "Hugging Face",
-      "Kaggle",
-      "Docker",
-      "AWS",
-      "MATLAB",
-      "Unity",
-      "Playwright",
+      "NeMo",
+      "OpenCV",
+      "spaCy",
+      "NLTK",
+      "LangChain",
+      "LangGraph",
+      "vLLM",
     ],
+  },
+  {
+    group: "Deployment & Cloud",
+    items: ["ONNX Runtime", "TensorRT", "Docker", "AWS SageMaker", "AWS EC2", "AWS S3", "AWS CloudWatch"],
   },
 ] as const;
 
 /** CV section: "Relevant Coursework - Coursera". */
 export const coursework = [
-  { title: "Machine Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
-  { title: "Deep Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
-  { title: "Retrieval Augmented Generation (RAG)", issuer: "DeepLearning.AI" },
+  { title: "Mastering REST APIs with FastAPI", issuer: "Packt" },
   {
     title: "Machine Learning in the Enterprise",
     issuer: "Machine Learning on Google Cloud Specialization - Google Cloud",
   },
+  { title: "Retrieval Augmented Generation (RAG)", issuer: "DeepLearning.AI" },
+  { title: "Machine Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
+  { title: "Deep Learning Specialization", issuer: "DeepLearning.AI, Stanford University" },
 ] as const;
 
 /* ------------------------------------------------------------------ */
@@ -503,7 +514,7 @@ export const posts = [
 ] as const;
 
 export const aside = {
-  sports: "Chess - FIDE Rating 1219",
+  sports: "Chess - FIDE Rating 1531",
   languages: "English (professional proficiency) · Sinhala (native proficiency)",
 } as const;
 

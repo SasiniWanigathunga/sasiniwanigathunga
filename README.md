@@ -13,7 +13,7 @@ B.Sc. Engineering (Hons) in Electronic and Telecommunication Engineering, Univer
 
 **[Test-Time Optimization for Domain Adaptive Open Vocabulary Segmentation](https://authors.elsevier.com/c/1nvvg3BBjKzNSr)**
 U. De Silva\*, D. Samaraweera\*, **S. Wanigathunga**\*, K. Kariyawasam\*, K. Ranasinghe, M. Naseer, R. Rodrigo
-Neural Networks (Elsevier), 2026 · [arXiv:2501.04696](https://arxiv.org/abs/2501.04696) · \*equal contribution
+Neural Networks (Elsevier), 2027 · [arXiv:2501.04696](https://arxiv.org/abs/2501.04696) · \*equal contribution
 
 ## Experience
 
@@ -26,9 +26,9 @@ Neural Networks (Elsevier), 2026 · [arXiv:2501.04696](https://arxiv.org/abs/250
 
 ## Skills
 
-**Programming Languages** - Python, C++, C#
-**Frameworks** - PyTorch, TensorFlow, spaCy, NLTK, NeMo, OpenCV, LangChain, LangGraph
-**Software & Tools** - VS Code, Git/GitHub, Hugging Face, Kaggle, Docker, AWS, MATLAB, Unity, Playwright
+**Programming Languages & Tools** - Python, MATLAB, C++, C#, Git, Playwright, Unity, FFmpeg
+**AI / ML** - PyTorch, TensorFlow, Hugging Face, NeMo, OpenCV, spaCy, NLTK, LangChain, LangGraph, vLLM
+**Deployment & Cloud** - ONNX Runtime, TensorRT, Docker, AWS (SageMaker, EC2, S3, CloudWatch)
 
 ---
 
@@ -82,7 +82,7 @@ index card and no count.
 
 **Editing content.** All content - roles, publications, projects, skills, awards, education - lives in
 [`lib/content.ts`](lib/content.ts), sourced verbatim from the CV, arXiv and Google Scholar. Change it
-there and every page follows. The CV PDF served by the site is `public/Sasini_Wanigathunga_CV.pdf`,
+there and every page follows. The CV PDF served by the site is `public/Sasini_Wanigathunga_2026.pdf`,
 and the profile photo is `public/profile.jpg`.
 
 **Theming.** Both palettes are CSS custom properties at the top of [`app/globals.css`](app/globals.css) -
