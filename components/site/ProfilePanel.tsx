@@ -4,10 +4,10 @@ import { asset } from "@/lib/utils";
 import { ArrowUpRight, Download, Github, Linkedin, Mail, Scholar } from "@/components/ui/icons";
 
 const externalLinks = [
-  { label: "Email", href: links.email, Icon: Mail },
-  { label: "LinkedIn", href: links.linkedin, Icon: Linkedin },
-  { label: "GitHub", href: links.github, Icon: Github },
-  { label: "Google Scholar", href: links.scholar, Icon: Scholar },
+  { label: "Email", href: links.email, Icon: Mail, color: "text-[#d44638] dark:text-[#f28b82]" },
+  { label: "LinkedIn", href: links.linkedin, Icon: Linkedin, color: "text-[#0a66c2] dark:text-[#70b5f9]" },
+  { label: "GitHub", href: links.github, Icon: Github, color: "text-[#6e40c9] dark:text-[#b794f6]" },
+  { label: "Google Scholar", href: links.scholar, Icon: Scholar, color: "text-[#4285f4] dark:text-[#8ab4f8]" },
 ];
 
 export function ProfilePanelRail() {
@@ -34,16 +34,16 @@ function PanelBody() {
         <p className="profile-location label mt-4 flex items-center gap-2 !text-[0.6rem]"><span aria-hidden className="size-1.5 rounded-full bg-accent" />Based in {profile.location}</p>
       </div>
       <ul className="profile-links mt-6 border-t border-hairline pt-3">
-        {externalLinks.map(({ label, href, Icon }) => (
+        {externalLinks.map(({ label, href, Icon, color }) => (
           <li key={label}>
             <a href={href} target={href.startsWith("mailto:") ? undefined : "_blank"} rel="noopener noreferrer" className="profile-link group">
-              <Icon className="size-4 shrink-0 text-muted group-hover:text-accent" />
+              <Icon className={`size-4 shrink-0 ${color}`} />
               <span>{label}</span><ArrowUpRight className="external-arrow ml-auto size-3 text-muted" />
             </a>
           </li>
         ))}
       </ul>
-      <a href={asset(links.cv)} target="_blank" rel="noopener noreferrer" className="profile-cv button-secondary mt-5 w-full"><Download className="size-3.5" />Curriculum vitae<span className="ml-auto font-mono text-[0.6rem] text-muted">PDF</span></a>
+      <a href={asset(links.cv)} target="_blank" rel="noopener noreferrer" className="profile-cv button-secondary mt-5 w-full"><Download className="size-3.5 text-accent" />Curriculum vitae<span className="ml-auto font-mono text-[0.6rem] text-muted">PDF</span></a>
     </div>
   );
 }

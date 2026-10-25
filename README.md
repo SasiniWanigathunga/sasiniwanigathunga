@@ -88,7 +88,7 @@ there and every page follows. The CV PDF served by the site is `public/Sasini_Wa
 and the profile photo is `public/profile.jpg`.
 
 **Theming.** Both palettes are CSS custom properties at the top of [`app/globals.css`](app/globals.css) -
-cool off-white and teal for light, graphite and mint for dark. The theme is resolved before first paint by an inline script
+cool off-white and teal for light, dark navy blue and mint for dark. The theme is resolved before first paint by an inline script
 in `app/layout.tsx`, so there is no flash of the wrong palette.
 
 **Fonts.** Inter, Newsreader, and JetBrains Mono are bundled in `app/fonts` and loaded with
